@@ -1,0 +1,29 @@
+openapi: 3.0.0
+info:
+  title: CoWorkerMatch API
+  version: 1.0.0
+servers:
+  - url: http://localhost:8080
+    description: Local Server
+tags:
+  - name: Users
+    description: ユーザに関する操作
+  - name: Hobbies
+    description: 趣味に関する操作
+  - name: UserHobbies
+    description: ユーザの趣味に関する操作
+  - name: Matches
+    description: マッチングに関する操作
+  - name: Questions
+    description: 2択の質問に関する操作
+  - name: QuestionCards
+    description: 質問カードに関する操作
+  - name: Messages
+    description: メッセージに関する操作
+paths:
+  /users:
+    get:
+      summary: Get all users
+      responses:
+        "200":
+          description: Successful response

@@ -27,6 +27,3 @@ paths:
     $ref: "./paths/users/{user_id}/index.yml"
   /hobbies:
     $ref: "./paths/hobbies/index.yml"
-components:
-  schemas:
-    $ref: "./components/schemas/index.yml"

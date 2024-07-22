@@ -25,7 +25,6 @@ paths:
     post:
       summary: Create a user
       description: Create a new user
-      operationId: createUser
       tags:
         - Users
       requestBody:
@@ -52,7 +51,6 @@ paths:
           required: true
           schema:
             type: string
-            format: uuid
       responses:
         '200':
           description: user_idからユーザ取得
@@ -70,7 +68,6 @@ paths:
           required: true
           schema:
             type: string
-            format: uuid
       requestBody:
         required: true
         content:
@@ -84,6 +81,35 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateUserResponse'
+  /hobbies:
+    get:
+      tags:
+        - Hobbies
+      summary: Get All hobbies with categories
+      responses:
+        '200':
+          description: List of all hobbies with categories
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetHobbyResponse'
+    post:
+      summary: Create a new hobby
+      tags:
+        - Hobbies
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Hobby'
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateHobbyResponse'
 components:
   schemas:
     UserBase:
@@ -157,3 +183,60 @@ components:
       properties:
         user:
           $ref: '#/components/schemas/User'
+    Hobby:
+      type: object
+      properties:
+        hobby_id:
+          type: string
+          format: uuid
+        hobby_name:
+          type: string
+    Category:
+      type: object
+      properties:
+        category_id:
+          type: string
+          format: uuid
+        hobbies:
+          type: array
+          items:
+            $ref: '#/components/schemas/Hobby'
+    GetHobbyResponse:
+      type: object
+      properties:
+        indoor:
+          $ref: '#/components/schemas/Category'
+        games:
+          $ref: '#/components/schemas/Category'
+        technicalHobbies:
+          $ref: '#/components/schemas/Category'
+        sports:
+          $ref: '#/components/schemas/Category'
+        outdoor:
+          $ref: '#/components/schemas/Category'
+        music:
+          $ref: '#/components/schemas/Category'
+    HobbyDetails:
+      type: object
+      properties:
+        hobby_id:
+          type: string
+          format: uuid
+        hobby_name:
+          type: string
+        category_id:
+          type: string
+          format: uuid
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+    CreateHobbyResponse:
+      type: object
+      properties:
+        hobby:
+          $ref: '#/components/schemas/HobbyDetails'
+    CreateHobbyRequest:
+      $ref: '#/components/schemas/Hobby'

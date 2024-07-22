@@ -238,5 +238,3 @@ components:
       properties:
         hobby:
           $ref: '#/components/schemas/HobbyDetails'
-    CreateHobbyRequest:
-      $ref: '#/components/schemas/Hobby'

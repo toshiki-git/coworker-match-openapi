@@ -22,7 +22,9 @@ tags:
     description: メッセージに関する操作
 paths:
   /users:
-    $ref: "./paths/users.yml"
+    $ref: "./paths/users/index.yml"
+  /users/{user_id}:
+    $ref: "./paths/users/{user_id}/index.yml"
 components:
   schemas:
     $ref: "./components/schemas/user.yml"

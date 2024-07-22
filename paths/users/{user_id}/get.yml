@@ -1,0 +1,18 @@
+get:
+  tags:
+    - Users
+  summary: Get a user by ID
+  parameters:
+    - name: user_id
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+  responses:
+    "200":
+      description: user_idからユーザ取得
+      content:
+        application/json:
+          schema:
+            $ref: "../../../components/schemas/user.yml#/GetUserResponse"

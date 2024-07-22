@@ -1,0 +1,19 @@
+post:
+  summary: Create a user
+  description: Create a new user
+  operationId: createUser
+  tags:
+    - Users
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: "../../components/schemas/user.yml#/CreateUserRequest"
+  responses:
+    "201":
+      description: Created
+      content:
+        application/json:
+          schema:
+            $ref: "../../components/schemas/user.yml#/CreateUserResponse"

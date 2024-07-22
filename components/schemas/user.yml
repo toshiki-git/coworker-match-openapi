@@ -1,27 +1,70 @@
-CreateUserRequest:
+UserBase:
   type: object
   properties:
     name:
       type: string
     email:
       type: string
-    password:
+    avatar_url:
       type: string
+      nullable: true
+    age:
+      type: integer
+      nullable: true
+    gender:
+      type: string
+      enum: ["male", "female", "other"]
+      nullable: true
+    birthplace:
+      type: string
+      nullable: true
+    job_type:
+      type: string
+      nullable: true
+    line_account:
+      type: string
+      nullable: true
+    discord_account:
+      type: string
+      nullable: true
+    biography:
+      type: string
+      nullable: true
+
+CreateUserRequest:
+  allOf:
+    - $ref: "#/UserBase"
   required:
     - name
     - email
-    - password
 
 CreateUserResponse:
   type: object
   properties:
-    id:
-      type: integer
-    name:
-      type: string
-    email:
-      type: string
-    password:
+    user:
+      $ref: "#/User"
+
+GetUserResponse:
+  type: object
+  properties:
+    user:
+      $ref: "#/User"
+
+UpdateUserRequest:
+  allOf:
+    - $ref: "#/UserBase"
+
+UpdateUserResponse:
+  type: object
+  properties:
+    user:
+      $ref: "#/User"
+
+User:
+  allOf:
+    - $ref: "#/UserBase"
+  properties:
+    user_id:
       type: string
     created_at:
       type: string
@@ -29,21 +72,3 @@ CreateUserResponse:
     updated_at:
       type: string
       format: date-time
-
-UpdateUserRequest:
-  type: object
-  properties:
-    name:
-      type: string
-    email:
-      type: string
-  required:
-    - email
-
-ErrorResponse:
-  type: object
-  properties:
-    code:
-      type: integer
-    message:
-      type: string

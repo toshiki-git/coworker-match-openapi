@@ -1,0 +1,49 @@
+CreateUserRequest:
+  type: object
+  properties:
+    name:
+      type: string
+    email:
+      type: string
+    password:
+      type: string
+  required:
+    - name
+    - email
+    - password
+
+CreateUserResponse:
+  type: object
+  properties:
+    id:
+      type: integer
+    name:
+      type: string
+    email:
+      type: string
+    password:
+      type: string
+    created_at:
+      type: string
+      format: date-time
+    updated_at:
+      type: string
+      format: date-time
+
+UpdateUserRequest:
+  type: object
+  properties:
+    name:
+      type: string
+    email:
+      type: string
+  required:
+    - email
+
+ErrorResponse:
+  type: object
+  properties:
+    code:
+      type: integer
+    message:
+      type: string

@@ -1,0 +1,62 @@
+Hobby:
+  type: object
+  properties:
+    hobby_id:
+      type: string
+      format: uuid
+    hobby_name:
+      type: string
+
+CreateHobbyRequest:
+  $ref: "#/Hobby"
+
+CreateHobbyResponse:
+  type: object
+  properties:
+    hobby:
+      $ref: "#/HobbyDetails"
+
+HobbyDetails:
+  type: object
+  properties:
+    hobby_id:
+      type: string
+      format: uuid
+    hobby_name:
+      type: string
+    category_id:
+      type: string
+      format: uuid
+    created_at:
+      type: string
+      format: date-time
+    updated_at:
+      type: string
+      format: date-time
+
+Category:
+  type: object
+  properties:
+    category_id:
+      type: string
+      format: uuid
+    hobbies:
+      type: array
+      items:
+        $ref: "#/Hobby"
+
+GetHobbyResponse:
+  type: object
+  properties:
+    indoor:
+      $ref: "#/Category"
+    games:
+      $ref: "#/Category"
+    technicalHobbies:
+      $ref: "#/Category"
+    sports:
+      $ref: "#/Category"
+    outdoor:
+      $ref: "#/Category"
+    music:
+      $ref: "#/Category"

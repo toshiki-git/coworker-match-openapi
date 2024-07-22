@@ -1,0 +1,137 @@
+UserBase:
+  type: object
+  properties:
+    name:
+      type: string
+    email:
+      type: string
+    avatar_url:
+      type: string
+      nullable: true
+    age:
+      type: integer
+      nullable: true
+    gender:
+      type: string
+      enum: ["male", "female", "other"]
+      nullable: true
+    birthplace:
+      type: string
+      nullable: true
+    job_type:
+      type: string
+      nullable: true
+    line_account:
+      type: string
+      nullable: true
+    discord_account:
+      type: string
+      nullable: true
+    biography:
+      type: string
+      nullable: true
+
+CreateUserRequest:
+  allOf:
+    - $ref: "#/UserBase"
+  required:
+    - name
+    - email
+
+CreateUserResponse:
+  type: object
+  properties:
+    user:
+      $ref: "#/User"
+
+GetUserResponse:
+  type: object
+  properties:
+    user:
+      $ref: "#/User"
+
+UpdateUserRequest:
+  allOf:
+    - $ref: "#/UserBase"
+
+UpdateUserResponse:
+  type: object
+  properties:
+    user:
+      $ref: "#/User"
+
+User:
+  allOf:
+    - $ref: "#/UserBase"
+  properties:
+    user_id:
+      type: string
+    created_at:
+      type: string
+      format: date-time
+    updated_at:
+      type: string
+      format: date-time
+
+Hobby:
+  type: object
+  properties:
+    hobby_id:
+      type: string
+      format: uuid
+    hobby_name:
+      type: string
+
+CreateHobbyRequest:
+  $ref: "#/Hobby"
+
+CreateHobbyResponse:
+  type: object
+  properties:
+    hobby:
+      $ref: "#/HobbyDetails"
+
+HobbyDetails:
+  type: object
+  properties:
+    hobby_id:
+      type: string
+      format: uuid
+    hobby_name:
+      type: string
+    category_id:
+      type: string
+      format: uuid
+    created_at:
+      type: string
+      format: date-time
+    updated_at:
+      type: string
+      format: date-time
+
+Category:
+  type: object
+  properties:
+    category_id:
+      type: string
+      format: uuid
+    hobbies:
+      type: array
+      items:
+        $ref: "#/Hobby"
+
+GetHobbyResponse:
+  type: object
+  properties:
+    indoor:
+      $ref: "#/Category"
+    games:
+      $ref: "#/Category"
+    technicalHobbies:
+      $ref: "#/Category"
+    sports:
+      $ref: "#/Category"
+    outdoor:
+      $ref: "#/Category"
+    music:
+      $ref: "#/Category"

@@ -1,0 +1,17 @@
+post:
+  summary: Create a new hobby
+  tags:
+    - Hobbies
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: "../../components/schemas/hobby.yml#/CreateHobbyRequest"
+  responses:
+    "201":
+      description: Created
+      content:
+        application/json:
+          schema:
+            $ref: "../../components/schemas/hobby.yml#/CreateHobbyResponse"

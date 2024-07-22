@@ -1,0 +1,11 @@
+get:
+  tags:
+    - Hobbies
+  summary: Get All hobbies with categories
+  responses:
+    "200":
+      description: List of all hobbies with categories
+      content:
+        application/json:
+          schema:
+            $ref: "../../components/schemas/hobby.yml#/GetHobbyResponse"

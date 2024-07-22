@@ -1,7 +1,6 @@
 post:
   summary: Create a user
   description: Create a new user
-  operationId: createUser
   tags:
     - Users
   requestBody:

@@ -1,0 +1,4 @@
+get:
+  $ref: "./get.yml#/get"
+post:
+  $ref: "./post.yml#/post"

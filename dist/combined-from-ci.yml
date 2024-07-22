@@ -1,0 +1,101 @@
+openapi: 3.0.0
+info:
+  title: CoWorkerMatch API
+  version: 1.0.0
+servers:
+  - url: http://localhost:8080
+    description: Local Server
+tags:
+  - name: Users
+    description: ユーザに関する操作
+  - name: Hobbies
+    description: 趣味に関する操作
+  - name: UserHobbies
+    description: ユーザの趣味に関する操作
+  - name: Matches
+    description: マッチングに関する操作
+  - name: Questions
+    description: 2択の質問に関する操作
+  - name: QuestionCards
+    description: 質問カードに関する操作
+  - name: Messages
+    description: メッセージに関する操作
+paths:
+  /users:
+    post:
+      summary: Create a user
+      description: Create a new user
+      operationId: createUser
+      tags:
+        - Users
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateUserRequest'
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateUserResponse'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
+        '500':
+          description: Internal server error
+components:
+  schemas:
+    CreateUserRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        email:
+          type: string
+        password:
+          type: string
+      required:
+        - name
+        - email
+        - password
+    CreateUserResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        email:
+          type: string
+        password:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+    UpdateUserRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        email:
+          type: string
+      required:
+        - email
+    ErrorResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+        message:
+          type: string

@@ -22,8 +22,7 @@ tags:
     description: メッセージに関する操作
 paths:
   /users:
-    get:
-      summary: Get all users
-      responses:
-        "200":
-          description: Successful response
+    $ref: "./paths/users.yml"
+components:
+  schemas:
+    $ref: "./components/schemas/user.yml"

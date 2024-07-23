@@ -1,0 +1,10 @@
+GetQuestionCardResponse:
+  type: array
+  items:
+    type: object
+    properties:
+      question_card_id:
+        type: string
+        format: uuid
+      question_card_text:
+        type: string

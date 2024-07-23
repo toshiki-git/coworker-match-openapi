@@ -6,11 +6,11 @@ GetMatchingResponse:
       matching_id:
         type: string
         format: uuid
-      image_url:
+      avator_url:
         type: string
-      user_name:
+      match_user_name:
         type: string
-      message:
+      last_message:
         type: string
-      unread_count:
+      unread_message_count:
         type: integer

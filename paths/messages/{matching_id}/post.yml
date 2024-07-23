@@ -1,0 +1,24 @@
+post:
+  tags:
+    - Messages
+  summary: Create a new message
+  parameters:
+    - name: matching_id
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: "../../../components/schemas/message.yml#/CreateMessageRequest"
+  responses:
+    "201":
+      description: Created
+      content:
+        application/json:
+          schema:
+            $ref: "../../../components/schemas/message.yml#/CreateMessageResponse"

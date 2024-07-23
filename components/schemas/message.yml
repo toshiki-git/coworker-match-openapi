@@ -1,0 +1,44 @@
+CreateMessageRequest:
+  type: object
+  properties:
+    matching_id:
+      type: string
+      format: uuid
+    user_id:
+      type: string
+    question_card_id:
+      type: string
+      format: uuid
+
+CreateMessageResponse:
+  type: object
+  properties:
+    message_id:
+      type: string
+      format: uuid
+    question_text:
+      type: string
+
+GetMessageResponse:
+  type: object
+  properties:
+    other_user_name:
+      type: string
+    messages:
+      type: array
+      items:
+        type: object
+        properties:
+          message_id:
+            type: string
+            format: uuid
+          message_text:
+            type: string
+          my_answer:
+            type: string
+          my_icon_url:
+            type: string
+          other_answer:
+            type: string
+          other_icon_url:
+            type: string

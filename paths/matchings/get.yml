@@ -1,0 +1,10 @@
+get:
+  tags:
+    - Matchings
+  summary: Get All matchings
+  responses:
+    "200":
+      content:
+        application/json:
+          schema:
+            $ref: "../../components/schemas/matching.yml#/GetMatchingResponse"

@@ -1,0 +1,16 @@
+GetMatchingResponse:
+  type: array
+  items:
+    type: object
+    properties:
+      matching_id:
+        type: string
+        format: uuid
+      image_url:
+        type: string
+      user_name:
+        type: string
+      message:
+        type: string
+      unread_count:
+        type: integer

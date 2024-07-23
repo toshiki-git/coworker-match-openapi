@@ -12,7 +12,7 @@ tags:
     description: 趣味に関する操作
   - name: UserHobbies
     description: ユーザの趣味に関する操作
-  - name: Matches
+  - name: Matchings
     description: マッチングに関する操作
   - name: Questions
     description: 2択の質問に関する操作
@@ -31,3 +31,5 @@ paths:
     $ref: "./paths/user_hobbies/index.yml"
   /user_hobbies/{user_id}:
     $ref: "./paths/user_hobbies/{user_id}/index.yml"
+  /matchings:
+    $ref: "./paths/matchings/index.yml"

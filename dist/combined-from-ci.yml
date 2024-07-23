@@ -23,8 +23,7 @@ tags:
 paths:
   /users:
     post:
-      summary: Create a user
-      description: Create a new user
+      summary: Create a  new user
       tags:
         - Users
       requestBody:
@@ -40,6 +39,23 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateUserResponse'
+    put:
+      tags:
+        - Users
+      summary: Update a user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateUserRequest'
+      responses:
+        '200':
+          description: 2回目以降ユーザがログインしたときに、Googleのアカウントの名前などが変更されている場合に情報を更新する or 単純にline_accountなどを追加・更新する時に呼ばれる。
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateUserResponse'
   /users/{user_id}:
     get:
       tags:
@@ -58,29 +74,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetUserResponse'
-    put:
-      tags:
-        - Users
-      summary: Update a user by ID
-      parameters:
-        - name: user_id
-          in: path
-          required: true
-          schema:
-            type: string
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/UpdateUserRequest'
-      responses:
-        '200':
-          description: 2回目以降ユーザがログインしたときに、Googleのアカウントの名前などが変更されている場合に情報を更新する or 単純にline_accountなどを追加・更新する時に呼ばれる。
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateUserResponse'
   /hobbies:
     get:
       tags:
@@ -102,7 +95,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Hobby'
+              $ref: '#/components/schemas/CreateHobbyRequest'
       responses:
         '201':
           description: Created
@@ -128,6 +121,23 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateUserHobbyResponse'
+    put:
+      tags:
+        - UserHobbies
+      summary: Update user hobbies
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateUserHobbyRequest'
+      responses:
+        '200':
+          description: Updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateUserHobbyResponse'
   /user_hobbies/{user_id}:
     get:
       tags:
@@ -146,29 +156,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetUserHobbyResponse'
-    put:
-      tags:
-        - UserHobbies
-      summary: Update user hobbies
-      parameters:
-        - name: user_id
-          in: path
-          required: true
-          schema:
-            type: string
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/UpdateUserHobbyRequest'
-      responses:
-        '200':
-          description: Updated
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateUserHobbyResponse'
   /matchings:
     get:
       tags:
@@ -283,7 +270,6 @@ components:
           type: string
         avatar_url:
           type: string
-          nullable: true
         age:
           type: integer
           nullable: true
@@ -309,24 +295,28 @@ components:
         biography:
           type: string
           nullable: true
+    UpdateUserRequest:
+      allOf:
+        - $ref: '#/components/schemas/UserBase'
+    User:
+      allOf:
+        - type: object
+          properties:
+            user_id:
+              type: string
+        - $ref: '#/components/schemas/UserBase'
+    UpdateUserResponse:
+      type: object
+      properties:
+        user:
+          $ref: '#/components/schemas/User'
     CreateUserRequest:
       allOf:
         - $ref: '#/components/schemas/UserBase'
       required:
         - name
         - email
-    User:
-      allOf:
-        - $ref: '#/components/schemas/UserBase'
-      properties:
-        user_id:
-          type: string
-        created_at:
-          type: string
-          format: date-time
-        updated_at:
-          type: string
-          format: date-time
+        - avatar_url
     CreateUserResponse:
       type: object
       properties:
@@ -337,14 +327,14 @@ components:
       properties:
         user:
           $ref: '#/components/schemas/User'
-    UpdateUserRequest:
-      allOf:
-        - $ref: '#/components/schemas/UserBase'
-    UpdateUserResponse:
+    Category:
       type: object
       properties:
-        user:
-          $ref: '#/components/schemas/User'
+        category_id:
+          type: string
+          format: uuid
+        category_name:
+          type: string
     Hobby:
       type: object
       properties:
@@ -353,31 +343,27 @@ components:
           format: uuid
         hobby_name:
           type: string
-    Category:
+    GetHobbyResponse:
+      type: array
+      items:
+        allOf:
+          - $ref: '#/components/schemas/Category'
+          - type: object
+            properties:
+              hobbies:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Hobby'
+    CreateHobbyRequest:
       type: object
       properties:
+        creator_id:
+          type: string
+        hobby_name:
+          type: string
         category_id:
           type: string
           format: uuid
-        hobbies:
-          type: array
-          items:
-            $ref: '#/components/schemas/Hobby'
-    GetHobbyResponse:
-      type: object
-      properties:
-        indoor:
-          $ref: '#/components/schemas/Category'
-        games:
-          $ref: '#/components/schemas/Category'
-        technicalHobbies:
-          $ref: '#/components/schemas/Category'
-        sports:
-          $ref: '#/components/schemas/Category'
-        outdoor:
-          $ref: '#/components/schemas/Category'
-        music:
-          $ref: '#/components/schemas/Category'
     HobbyDetails:
       type: object
       properties:
@@ -386,15 +372,11 @@ components:
           format: uuid
         hobby_name:
           type: string
+        creator_id:
+          type: string
         category_id:
           type: string
           format: uuid
-        created_at:
-          type: string
-          format: date-time
-        updated_at:
-          type: string
-          format: date-time
     CreateHobbyResponse:
       type: object
       properties:
@@ -403,13 +385,17 @@ components:
     UserHobby:
       type: object
       properties:
-        user_id:
-          type: string
         hobby_ids:
           type: array
           items:
             type: string
             format: uuid
+    UpdateUserHobbyRequest:
+      allOf:
+        - $ref: '#/components/schemas/UserHobby'
+    UpdateUserHobbyResponse:
+      allOf:
+        - $ref: '#/components/schemas/UserHobby'
     CreateUserHobbyRequest:
       allOf:
         - $ref: '#/components/schemas/UserHobby'
@@ -426,12 +412,6 @@ components:
             format: uuid
           hobby_name:
             type: string
-    UpdateUserHobbyRequest:
-      allOf:
-        - $ref: '#/components/schemas/UserHobby'
-    UpdateUserHobbyResponse:
-      allOf:
-        - $ref: '#/components/schemas/UserHobby'
     GetMatchingResponse:
       type: array
       items:
@@ -440,13 +420,13 @@ components:
           matching_id:
             type: string
             format: uuid
-          image_url:
+          avator_url:
             type: string
-          user_name:
+          match_user_name:
             type: string
-          message:
+          last_message:
             type: string
-          unread_count:
+          unread_message_count:
             type: integer
     Choice:
       type: object
@@ -484,8 +464,6 @@ components:
     CreateQuestionRequest:
       type: object
       properties:
-        user_id:
-          type: string
         answers:
           type: array
           items:

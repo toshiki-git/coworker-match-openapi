@@ -1,0 +1,17 @@
+get:
+  tags:
+    - UserHobbies
+  summary: Get all hobbies of a user
+  parameters:
+    - name: user_id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    "200":
+      description: user_idからユーザ取得
+      content:
+        application/json:
+          schema:
+            $ref: "../../../components/schemas/user_hobby.yml#/GetUserHobbyResponse"

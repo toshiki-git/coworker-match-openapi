@@ -1,0 +1,37 @@
+UserHobby:
+  type: object
+  properties:
+    user_id:
+      type: string
+    hobby_ids:
+      type: array
+      items:
+        type: string
+        format: uuid
+
+CreateUserHobbyRequest:
+  allOf:
+    - $ref: "#/UserHobby"
+
+CreateUserHobbyResponse:
+  allOf:
+    - $ref: "#/UserHobby"
+
+UpdateUserHobbyRequest:
+  allOf:
+    - $ref: "#/UserHobby"
+
+UpdateUserHobbyResponse:
+  allOf:
+    - $ref: "#/UserHobby"
+
+GetUserHobbyResponse:
+  type: array
+  items:
+    type: object
+    properties:
+      hobby_id:
+        type: string
+        format: uuid
+      hobby_name:
+        type: string

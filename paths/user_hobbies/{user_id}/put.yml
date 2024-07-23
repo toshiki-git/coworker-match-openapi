@@ -1,0 +1,22 @@
+put:
+  tags:
+    - UserHobbies
+  summary: Update user hobbies
+  parameters:
+    - name: user_id
+      in: path
+      required: true
+      schema:
+        type: string
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: "../../../components/schemas/user_hobby.yml#/UpdateUserHobbyRequest"
+  responses:
+    "200":
+      content:
+        application/json:
+          schema:
+            $ref: "../../../components/schemas/user_hobby.yml#/UpdateUserHobbyResponse"

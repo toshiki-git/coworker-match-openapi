@@ -27,3 +27,7 @@ paths:
     $ref: "./paths/users/{user_id}/index.yml"
   /hobbies:
     $ref: "./paths/hobbies/index.yml"
+  /user_hobbies:
+    $ref: "./paths/user_hobbies/index.yml"
+  /user_hobbies/{user_id}:
+    $ref: "./paths/user_hobbies/{user_id}/index.yml"

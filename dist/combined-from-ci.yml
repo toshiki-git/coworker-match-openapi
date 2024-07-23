@@ -12,7 +12,7 @@ tags:
     description: 趣味に関する操作
   - name: UserHobbies
     description: ユーザの趣味に関する操作
-  - name: Matches
+  - name: Matchings
     description: マッチングに関する操作
   - name: Questions
     description: 2択の質問に関する操作
@@ -110,6 +110,168 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateHobbyResponse'
+  /user_hobbies:
+    post:
+      summary: Create user new hobbies
+      tags:
+        - UserHobbies
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateUserHobbyRequest'
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateUserHobbyResponse'
+  /user_hobbies/{user_id}:
+    get:
+      tags:
+        - UserHobbies
+      summary: Get all hobbies of a user
+      parameters:
+        - name: user_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: user_idからユーザ取得
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetUserHobbyResponse'
+    put:
+      tags:
+        - UserHobbies
+      summary: Update user hobbies
+      parameters:
+        - name: user_id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateUserHobbyRequest'
+      responses:
+        '200':
+          description: Updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateUserHobbyResponse'
+  /matchings:
+    get:
+      tags:
+        - Matchings
+      summary: Get All matchings
+      responses:
+        '200':
+          description: List of all matchings
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetMatchingResponse'
+  /questions:
+    post:
+      summary: Create a new matching
+      tags:
+        - Questions
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateQuestionRequest'
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateQuestionResponse'
+    get:
+      tags:
+        - Questions
+      summary: Get user questions
+      responses:
+        '200':
+          description: List of all questions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetQuestionResponse'
+  /question_cards/{matching_id}:
+    get:
+      tags:
+        - QuestionCards
+      summary: Get User Questions
+      parameters:
+        - name: matching_id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: List of all questions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetQuestionCardResponse'
+  /messages/{matching_id}:
+    post:
+      tags:
+        - Messages
+      summary: Create a new message
+      parameters:
+        - name: matching_id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateMessageRequest'
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateMessageResponse'
+    get:
+      tags:
+        - Messages
+      summary: Get all messages for a matching
+      parameters:
+        - name: matching_id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: List of all messages
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetMessageResponse'
 components:
   schemas:
     UserBase:
@@ -238,3 +400,158 @@ components:
       properties:
         hobby:
           $ref: '#/components/schemas/HobbyDetails'
+    UserHobby:
+      type: object
+      properties:
+        user_id:
+          type: string
+        hobby_ids:
+          type: array
+          items:
+            type: string
+            format: uuid
+    CreateUserHobbyRequest:
+      allOf:
+        - $ref: '#/components/schemas/UserHobby'
+    CreateUserHobbyResponse:
+      allOf:
+        - $ref: '#/components/schemas/UserHobby'
+    GetUserHobbyResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          hobby_id:
+            type: string
+            format: uuid
+          hobby_name:
+            type: string
+    UpdateUserHobbyRequest:
+      allOf:
+        - $ref: '#/components/schemas/UserHobby'
+    UpdateUserHobbyResponse:
+      allOf:
+        - $ref: '#/components/schemas/UserHobby'
+    GetMatchingResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          matching_id:
+            type: string
+            format: uuid
+          image_url:
+            type: string
+          user_name:
+            type: string
+          message:
+            type: string
+          unread_count:
+            type: integer
+    Choice:
+      type: object
+      properties:
+        choice_text:
+          type: string
+          example: 'yes'
+        choice_image_url:
+          type: string
+    Question:
+      type: object
+      properties:
+        question_id:
+          type: string
+          format: uuid
+        question_text:
+          type: string
+        choice1:
+          $ref: '#/components/schemas/Choice'
+        choice2:
+          $ref: '#/components/schemas/Choice'
+    GetQuestionResponse:
+      type: array
+      items:
+        $ref: '#/components/schemas/Question'
+    Answer:
+      type: object
+      properties:
+        question_id:
+          type: string
+          format: uuid
+        answer:
+          type: string
+          example: 'yes'
+    CreateQuestionRequest:
+      type: object
+      properties:
+        user_id:
+          type: string
+        answers:
+          type: array
+          items:
+            $ref: '#/components/schemas/Answer'
+    CreateQuestionResponse:
+      type: object
+      properties:
+        matching_id:
+          type: string
+          format: uuid
+        sender_user_id:
+          type: string
+        receiver_user_id:
+          type: string
+        matching_date:
+          type: string
+          format: date-time
+    GetQuestionCardResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          question_card_id:
+            type: string
+            format: uuid
+          question_card_text:
+            type: string
+    GetMessageResponse:
+      type: object
+      properties:
+        other_user_name:
+          type: string
+        messages:
+          type: array
+          items:
+            type: object
+            properties:
+              message_id:
+                type: string
+                format: uuid
+              message_text:
+                type: string
+              my_answer:
+                type: string
+              my_icon_url:
+                type: string
+              other_answer:
+                type: string
+              other_icon_url:
+                type: string
+    CreateMessageRequest:
+      type: object
+      properties:
+        matching_id:
+          type: string
+          format: uuid
+        user_id:
+          type: string
+        question_card_id:
+          type: string
+          format: uuid
+    CreateMessageResponse:
+      type: object
+      properties:
+        message_id:
+          type: string
+          format: uuid
+        question_text:
+          type: string

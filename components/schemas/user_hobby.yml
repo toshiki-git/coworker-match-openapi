@@ -1,8 +1,6 @@
 UserHobby:
   type: object
   properties:
-    user_id:
-      type: string
     hobby_ids:
       type: array
       items:

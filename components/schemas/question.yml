@@ -1,0 +1,60 @@
+CreateQuestionRequest:
+  type: object
+  properties:
+    user_id:
+      type: string
+    answers:
+      type: array
+      items:
+        $ref: "#/Answer"
+
+Answer:
+  type: object
+  properties:
+    question_id:
+      type: string
+      format: uuid
+    answer:
+      type: string
+      example: "yes"
+
+CreateQuestionResponse:
+  type: object
+  properties:
+    matching_id:
+      type: string
+      format: uuid
+    sender_user_id:
+      type: string
+    receiver_user_id:
+      type: string
+    matching_date:
+      type: string
+      format: date-time
+
+GetQuestionResponse:
+  type: array
+  items:
+    $ref: "#/Question"
+
+Question:
+  type: object
+  properties:
+    question_id:
+      type: string
+      format: uuid
+    question_text:
+      type: string
+    choice1:
+      $ref: "#/Choice"
+    choice2:
+      $ref: "#/Choice"
+
+Choice:
+  type: object
+  properties:
+    choice_text:
+      type: string
+      example: "yes"
+    choice_image_url:
+      type: string

@@ -4,6 +4,7 @@ get:
   summary: Get All matchings
   responses:
     "200":
+      description: List of all matchings
       content:
         application/json:
           schema:

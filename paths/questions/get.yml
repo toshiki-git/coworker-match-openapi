@@ -1,0 +1,11 @@
+get:
+  tags:
+    - Questions
+  summary: Get user questions
+  responses:
+    "200":
+      description: List of all questions
+      content:
+        application/json:
+          schema:
+            $ref: "../../components/schemas/question.yml#/GetQuestionResponse"

@@ -16,6 +16,7 @@ put:
           $ref: "../../../components/schemas/user_hobby.yml#/UpdateUserHobbyRequest"
   responses:
     "200":
+      description: Updated
       content:
         application/json:
           schema:

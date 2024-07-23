@@ -1,0 +1,17 @@
+post:
+  summary: Create a new matching
+  tags:
+    - Questions
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: "../../components/schemas/question.yml#/CreateQuestionRequest"
+  responses:
+    "201":
+      description: Created
+      content:
+        application/json:
+          schema:
+            $ref: "../../components/schemas/question.yml#/CreateQuestionResponse"

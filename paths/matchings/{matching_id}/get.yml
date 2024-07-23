@@ -1,0 +1,17 @@
+get:
+  tags:
+    - Matchings
+  summary: Get match user
+  parameters:
+    - name: matching_id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    "200":
+      description: Get match user
+      content:
+        application/json:
+          schema:
+            $ref: "../../../components/schemas/matching.yml#/GetMatchingUserResponse"

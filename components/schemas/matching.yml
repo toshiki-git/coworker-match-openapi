@@ -6,7 +6,7 @@ GetMatchingResponse:
       matching_id:
         type: string
         format: uuid
-      avator_url:
+      avatar_url:
         type: string
       match_user_name:
         type: string
@@ -14,3 +14,9 @@ GetMatchingResponse:
         type: string
       unread_message_count:
         type: integer
+
+GetMatchingUserResponse:
+  type: object
+  properties:
+    user:
+      $ref: "./user.yml#/User"

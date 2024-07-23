@@ -8,7 +8,15 @@ Hobby:
       type: string
 
 CreateHobbyRequest:
-  $ref: "#/Hobby"
+  type: object
+  properties:
+    creator_id:
+      type: string
+    hobby_name:
+      type: string
+    category_id:
+      type: string
+      format: uuid
 
 CreateHobbyResponse:
   type: object
@@ -24,15 +32,11 @@ HobbyDetails:
       format: uuid
     hobby_name:
       type: string
+    creator_id:
+      type: string
     category_id:
       type: string
       format: uuid
-    created_at:
-      type: string
-      format: date-time
-    updated_at:
-      type: string
-      format: date-time
 
 Category:
   type: object
@@ -40,23 +44,17 @@ Category:
     category_id:
       type: string
       format: uuid
-    hobbies:
-      type: array
-      items:
-        $ref: "#/Hobby"
+    category_name:
+      type: string
 
 GetHobbyResponse:
-  type: object
-  properties:
-    indoor:
-      $ref: "#/Category"
-    games:
-      $ref: "#/Category"
-    technicalHobbies:
-      $ref: "#/Category"
-    sports:
-      $ref: "#/Category"
-    outdoor:
-      $ref: "#/Category"
-    music:
-      $ref: "#/Category"
+  type: array
+  items:
+    allOf:
+      - $ref: "#/Category"
+      - type: object
+        properties:
+          hobbies:
+            type: array
+            items:
+              $ref: "#/Hobby"

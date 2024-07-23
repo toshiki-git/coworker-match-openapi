@@ -7,7 +7,6 @@ UserBase:
       type: string
     avatar_url:
       type: string
-      nullable: true
     age:
       type: integer
       nullable: true
@@ -37,6 +36,7 @@ CreateUserRequest:
   required:
     - name
     - email
+    - avatar_url
 
 CreateUserResponse:
   type: object
@@ -62,13 +62,8 @@ UpdateUserResponse:
 
 User:
   allOf:
+    - type: object
+      properties:
+        user_id:
+          type: string
     - $ref: "#/UserBase"
-  properties:
-    user_id:
-      type: string
-    created_at:
-      type: string
-      format: date-time
-    updated_at:
-      type: string
-      format: date-time

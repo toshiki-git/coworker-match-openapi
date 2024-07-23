@@ -1,6 +1,5 @@
 post:
-  summary: Create a user
-  description: Create a new user
+  summary: Create a  new user
   tags:
     - Users
   requestBody:

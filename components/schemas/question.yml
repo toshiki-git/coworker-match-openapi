@@ -1,8 +1,6 @@
 CreateQuestionRequest:
   type: object
   properties:
-    user_id:
-      type: string
     answers:
       type: array
       items:

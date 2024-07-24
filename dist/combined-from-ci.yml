@@ -282,7 +282,7 @@ components:
     UserBase:
       type: object
       properties:
-        name:
+        user_name:
           type: string
         email:
           type: string

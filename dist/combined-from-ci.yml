@@ -288,31 +288,6 @@ components:
           type: string
         avatar_url:
           type: string
-        age:
-          type: integer
-          nullable: true
-        gender:
-          type: string
-          enum:
-            - male
-            - female
-            - other
-          nullable: true
-        birthplace:
-          type: string
-          nullable: true
-        job_type:
-          type: string
-          nullable: true
-        line_account:
-          type: string
-          nullable: true
-        discord_account:
-          type: string
-          nullable: true
-        biography:
-          type: string
-          nullable: true
     UpdateUserRequest:
       allOf:
         - $ref: '#/components/schemas/UserBase'

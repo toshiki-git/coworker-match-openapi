@@ -35,8 +35,8 @@ paths:
     $ref: "./paths/matchings/index.yml"
   /matchings/{matching_id}:
     $ref: "./paths/matchings/{matching_id}/index.yml"
-  /questions:
-    $ref: "./paths/questions/index.yml"
+  /matching_questions:
+    $ref: "./paths/matching_questions/index.yml"
   /question_cards/{matching_id}:
     $ref: "./paths/question_cards/{matching_id}/index.yml"
   /messages/{matching_id}:

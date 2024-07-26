@@ -186,7 +186,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetMatchingUserResponse'
-  /questions:
+  /matching_questions:
     post:
       summary: Create a new matching
       tags:

@@ -52,3 +52,15 @@ GetMessageResponse:
                 $ref: "#/Message"
               you:
                 $ref: "#/Message"
+
+UpdateMessageRequest:
+  type: object
+  properties:
+    message_text:
+      type: string
+
+UpdateMessageResponse:
+  type: object
+  properties:
+    message_text:
+      type: string

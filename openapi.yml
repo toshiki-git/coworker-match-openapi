@@ -41,3 +41,5 @@ paths:
     $ref: "./paths/question_cards/{matching_id}/index.yml"
   /messages/{matching_id}:
     $ref: "./paths/messages/{matching_id}/index.yml"
+  /messages/{message_id}:
+    $ref: "./paths/messages/{message_id}/index.yml"

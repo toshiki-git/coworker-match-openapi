@@ -1,0 +1,24 @@
+put:
+  tags:
+    - Messages
+  summary: Update a message
+  parameters:
+    - name: message_id
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: "../../../components/schemas/message.yml#/UpdateMessageRequest"
+  responses:
+    "201":
+      description: Created
+      content:
+        application/json:
+          schema:
+            $ref: "../../../components/schemas/message.yml#/UpdateMessageResponse"

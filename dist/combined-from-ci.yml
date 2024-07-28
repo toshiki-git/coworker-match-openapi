@@ -489,6 +489,8 @@ components:
             format: uuid
           question_card_text:
             type: string
+          is_read:
+            type: boolean
     Message:
       type: object
       properties:

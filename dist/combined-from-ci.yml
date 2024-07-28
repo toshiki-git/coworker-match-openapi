@@ -277,6 +277,31 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetMessageResponse'
+  /messages/{message_id}:
+    put:
+      tags:
+        - Messages
+      summary: Update a message
+      parameters:
+        - name: message_id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateMessageRequest'
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateMessageResponse'
 components:
   schemas:
     UserBase:
@@ -532,4 +557,14 @@ components:
           type: string
           format: uuid
         question_card_text:
+          type: string
+    UpdateMessageRequest:
+      type: object
+      properties:
+        message_text:
+          type: string
+    UpdateMessageResponse:
+      type: object
+      properties:
+        message_text:
           type: string

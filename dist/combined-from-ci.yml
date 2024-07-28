@@ -556,8 +556,6 @@ components:
         message_id:
           type: string
           format: uuid
-        question_card_text:
-          type: string
     UpdateMessageRequest:
       type: object
       properties:

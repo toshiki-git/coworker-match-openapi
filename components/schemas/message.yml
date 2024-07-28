@@ -29,8 +29,6 @@ CreateMessageResponse:
     message_id:
       type: string
       format: uuid
-    question_card_text:
-      type: string
 
 GetMessageResponse:
   type: object

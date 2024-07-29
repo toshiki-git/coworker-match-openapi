@@ -5,6 +5,8 @@ CreateQuestionRequest:
       type: array
       items:
         $ref: "#/Answer"
+  required:
+    - answers
 
 Answer:
   type: object
@@ -15,6 +17,9 @@ Answer:
     answer:
       type: string
       example: "yes"
+  required:
+    - question_id
+    - answer
 
 CreateQuestionResponse:
   type: object
@@ -29,6 +34,11 @@ CreateQuestionResponse:
     matching_date:
       type: string
       format: date-time
+  required:
+    - matching_id
+    - sender_user_id
+    - receiver_user_id
+    - matching_date
 
 GetQuestionResponse:
   type: array
@@ -47,6 +57,11 @@ Question:
       $ref: "#/Choice"
     choice2:
       $ref: "#/Choice"
+  required:
+    - question_id
+    - question_text
+    - choice1
+    - choice2
 
 Choice:
   type: object
@@ -56,3 +71,6 @@ Choice:
       example: "yes"
     choice_image_url:
       type: string
+  required:
+    - choice_text
+    - choice_image_url

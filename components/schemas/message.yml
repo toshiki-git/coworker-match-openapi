@@ -6,6 +6,9 @@ Message:
       format: uuid
     message_text:
       type: string
+  required:
+    - message_id
+    - message_text
 
 QuestionCard:
   type: object
@@ -15,6 +18,9 @@ QuestionCard:
       format: uuid
     question_card_text:
       type: string
+  required:
+    - question_card_id
+    - question_card_text
 
 CreateMessageRequest:
   type: object
@@ -22,6 +28,8 @@ CreateMessageRequest:
     question_card_id:
       type: string
       format: uuid
+  required:
+    - question_card_id
 
 CreateMessageResponse:
   type: object
@@ -29,6 +37,8 @@ CreateMessageResponse:
     message_id:
       type: string
       format: uuid
+  required:
+    - message_id
 
 GetMessageResponse:
   type: object
@@ -50,15 +60,28 @@ GetMessageResponse:
                 $ref: "#/Message"
               you:
                 $ref: "#/Message"
+            required:
+              - me
+              - you
+        required:
+          - question_card_id
+          - question_card_text
+          - message_pair
+  required:
+    - messages
 
 UpdateMessageRequest:
   type: object
   properties:
     message_text:
       type: string
+  required:
+    - message_text
 
 UpdateMessageResponse:
   type: object
   properties:
     message_text:
       type: string
+  required:
+    - message_text

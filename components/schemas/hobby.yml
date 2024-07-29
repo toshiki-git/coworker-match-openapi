@@ -30,6 +30,8 @@ CreateHobbyResponse:
   properties:
     hobby:
       $ref: "#/HobbyDetails"
+  required:
+    - hobby
 
 HobbyDetails:
   type: object

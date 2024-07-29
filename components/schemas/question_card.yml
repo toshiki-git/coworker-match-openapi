@@ -10,3 +10,7 @@ GetQuestionCardResponse:
         type: string
       is_used:
         type: boolean
+    required:
+      - question_card_id
+      - question_card_text
+      - is_used

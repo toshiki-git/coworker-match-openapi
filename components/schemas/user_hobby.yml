@@ -6,6 +6,8 @@ UserHobby:
       items:
         type: string
         format: uuid
+  required:
+    - hobby_ids
 
 CreateUserHobbyRequest:
   allOf:
@@ -33,3 +35,6 @@ GetUserHobbyResponse:
         format: uuid
       hobby_name:
         type: string
+    required:
+      - hobby_id
+      - hobby_name

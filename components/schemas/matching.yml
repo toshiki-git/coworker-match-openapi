@@ -14,9 +14,17 @@ GetMatchingResponse:
         type: string
       unread_message_count:
         type: integer
+    required:
+      - matching_id
+      - avatar_url
+      - match_user_name
+      - last_message
+      - unread_message_count
 
 GetMatchingUserResponse:
   type: object
   properties:
     user:
       $ref: "./user.yml#/User"
+  required:
+    - user

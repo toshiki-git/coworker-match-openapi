@@ -7,26 +7,30 @@ UserBase:
       type: string
     avatar_url:
       type: string
+  required:
+    - user_name
+    - email
+    - avatar_url
 
 CreateUserRequest:
   allOf:
     - $ref: "#/UserBase"
-  required:
-    - name
-    - email
-    - avatar_url
 
 CreateUserResponse:
   type: object
   properties:
     user:
       $ref: "#/User"
+  required:
+    - user
 
 GetUserResponse:
   type: object
   properties:
     user:
       $ref: "#/User"
+  required:
+    - user
 
 UpdateUserRequest:
   allOf:
@@ -37,6 +41,8 @@ UpdateUserResponse:
   properties:
     user:
       $ref: "#/User"
+  required:
+    - user
 
 User:
   allOf:
@@ -44,4 +50,7 @@ User:
       properties:
         user_id:
           type: string
+          format: uuid
+      required:
+        - user_id
     - $ref: "#/UserBase"

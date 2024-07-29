@@ -11,34 +11,34 @@ CreateQuestionRequest:
 Answer:
   type: object
   properties:
-    question_id:
+    questionId:
       type: string
       format: uuid
     answer:
       type: string
       example: "yes"
   required:
-    - question_id
+    - questionId
     - answer
 
 CreateQuestionResponse:
   type: object
   properties:
-    matching_id:
+    matchingId:
       type: string
       format: uuid
-    sender_user_id:
+    senderUserId:
       type: string
-    receiver_user_id:
+    receiverUserId:
       type: string
-    matching_date:
+    matchingDate:
       type: string
       format: date-time
   required:
-    - matching_id
-    - sender_user_id
-    - receiver_user_id
-    - matching_date
+    - matchingId
+    - senderUserId
+    - receiverUserId
+    - matchingDate
 
 GetQuestionResponse:
   type: array
@@ -48,29 +48,29 @@ GetQuestionResponse:
 Question:
   type: object
   properties:
-    question_id:
+    questionId:
       type: string
       format: uuid
-    question_text:
+    questionText:
       type: string
     choice1:
       $ref: "#/Choice"
     choice2:
       $ref: "#/Choice"
   required:
-    - question_id
-    - question_text
+    - questionId
+    - questionText
     - choice1
     - choice2
 
 Choice:
   type: object
   properties:
-    choice_text:
+    choiceText:
       type: string
       example: "yes"
-    choice_image_url:
+    choiceImageUrl:
       type: string
   required:
-    - choice_text
-    - choice_image_url
+    - choiceText
+    - choiceImageUrl

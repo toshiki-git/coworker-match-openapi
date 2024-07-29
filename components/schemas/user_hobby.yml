@@ -1,13 +1,13 @@
 UserHobby:
   type: object
   properties:
-    hobby_ids:
+    hobbyIds:
       type: array
       items:
         type: string
         format: uuid
   required:
-    - hobby_ids
+    - hobbyIds
 
 CreateUserHobbyRequest:
   allOf:
@@ -30,11 +30,11 @@ GetUserHobbyResponse:
   items:
     type: object
     properties:
-      hobby_id:
+      hobbyId:
         type: string
         format: uuid
-      hobby_name:
+      hobbyName:
         type: string
     required:
-      - hobby_id
-      - hobby_name
+      - hobbyId
+      - hobbyName

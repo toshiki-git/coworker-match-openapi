@@ -1,29 +1,29 @@
 Hobby:
   type: object
   properties:
-    hobby_id:
+    hobbyId:
       type: string
       format: uuid
-    hobby_name:
+    hobbyName:
       type: string
   required:
-    - hobby_id
-    - hobby_name
+    - hobbyId
+    - hobbyName
 
 CreateHobbyRequest:
   type: object
   properties:
-    creator_id:
+    creatorId:
       type: string
-    hobby_name:
+    hobbyName:
       type: string
-    category_id:
+    categoryId:
       type: string
       format: uuid
   required:
-    - creator_id
-    - hobby_name
-    - category_id
+    - creatorId
+    - hobbyName
+    - categoryId
 
 CreateHobbyResponse:
   type: object
@@ -36,33 +36,33 @@ CreateHobbyResponse:
 HobbyDetails:
   type: object
   properties:
-    hobby_id:
+    hobbyId:
       type: string
       format: uuid
-    hobby_name:
+    hobbyName:
       type: string
-    creator_id:
+    creatorId:
       type: string
-    category_id:
+    categoryId:
       type: string
       format: uuid
   required:
-    - hobby_id
-    - hobby_name
-    - creator_id
-    - category_id
+    - hobbyId
+    - hobbyName
+    - creatorId
+    - categoryId
 
 Category:
   type: object
   properties:
-    category_id:
+    categoryId:
       type: string
       format: uuid
-    category_name:
+    categoryName:
       type: string
   required:
-    - category_id
-    - category_name
+    - categoryId
+    - categoryName
 
 GetHobbyResponse:
   type: array

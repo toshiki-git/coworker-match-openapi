@@ -1,44 +1,44 @@
 Message:
   type: object
   properties:
-    message_id:
+    messageId:
       type: string
       format: uuid
-    message_text:
+    messageText:
       type: string
   required:
-    - message_id
-    - message_text
+    - messageId
+    - messageText
 
 QuestionCard:
   type: object
   properties:
-    question_card_id:
+    questionCardId:
       type: string
       format: uuid
-    question_card_text:
+    questionCardText:
       type: string
   required:
-    - question_card_id
-    - question_card_text
+    - questionCardId
+    - questionCardText
 
 CreateMessageRequest:
   type: object
   properties:
-    question_card_id:
+    questionCardId:
       type: string
       format: uuid
   required:
-    - question_card_id
+    - questionCardId
 
 CreateMessageResponse:
   type: object
   properties:
-    message_id:
+    messageId:
       type: string
       format: uuid
   required:
-    - message_id
+    - messageId
 
 GetMessageResponse:
   type: object
@@ -48,12 +48,12 @@ GetMessageResponse:
       items:
         type: object
         properties:
-          question_card_id:
+          questionCardId:
             type: string
             format: uuid
-          question_card_text:
+          questionCardText:
             type: string
-          message_pair:
+          messagePair:
             type: object
             properties:
               me:
@@ -64,24 +64,24 @@ GetMessageResponse:
               - me
               - you
         required:
-          - question_card_id
-          - question_card_text
-          - message_pair
+          - questionCardId
+          - questionCardText
+          - messagePair
   required:
     - messages
 
 UpdateMessageRequest:
   type: object
   properties:
-    message_text:
+    messageText:
       type: string
   required:
-    - message_text
+    - messageText
 
 UpdateMessageResponse:
   type: object
   properties:
-    message_text:
+    messageText:
       type: string
   required:
-    - message_text
+    - messageText

@@ -1,16 +1,16 @@
 UserBase:
   type: object
   properties:
-    user_name:
+    userName:
       type: string
     email:
       type: string
-    avatar_url:
+    avatarUrl:
       type: string
   required:
-    - user_name
+    - userName
     - email
-    - avatar_url
+    - avatarUrl
 
 CreateUserRequest:
   allOf:
@@ -48,9 +48,9 @@ User:
   allOf:
     - type: object
       properties:
-        user_id:
+        userId:
           type: string
           format: uuid
       required:
-        - user_id
+        - userId
     - $ref: "#/UserBase"

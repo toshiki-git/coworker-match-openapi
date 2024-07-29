@@ -3,23 +3,23 @@ GetMatchingResponse:
   items:
     type: object
     properties:
-      matching_id:
+      matchingId:
         type: string
         format: uuid
-      avatar_url:
+      avatarUrl:
         type: string
-      match_user_name:
+      matchUserName:
         type: string
-      last_message:
+      lastMessage:
         type: string
-      unread_message_count:
+      unreadMessageCount:
         type: integer
     required:
-      - matching_id
-      - avatar_url
-      - match_user_name
-      - last_message
-      - unread_message_count
+      - matchingId
+      - avatarUrl
+      - matchUserName
+      - lastMessage
+      - unreadMessageCount
 
 GetMatchingUserResponse:
   type: object

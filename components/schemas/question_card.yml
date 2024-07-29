@@ -3,14 +3,14 @@ GetQuestionCardResponse:
   items:
     type: object
     properties:
-      question_card_id:
+      questionCardId:
         type: string
         format: uuid
-      question_card_text:
+      questionCardText:
         type: string
-      is_used:
+      isUsed:
         type: boolean
     required:
-      - question_card_id
-      - question_card_text
-      - is_used
+      - questionCardId
+      - questionCardText
+      - isUsed

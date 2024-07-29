@@ -6,6 +6,9 @@ Hobby:
       format: uuid
     hobby_name:
       type: string
+  required:
+    - hobby_id
+    - hobby_name
 
 CreateHobbyRequest:
   type: object
@@ -17,6 +20,10 @@ CreateHobbyRequest:
     category_id:
       type: string
       format: uuid
+  required:
+    - creator_id
+    - hobby_name
+    - category_id
 
 CreateHobbyResponse:
   type: object
@@ -37,6 +44,11 @@ HobbyDetails:
     category_id:
       type: string
       format: uuid
+  required:
+    - hobby_id
+    - hobby_name
+    - creator_id
+    - category_id
 
 Category:
   type: object
@@ -46,6 +58,9 @@ Category:
       format: uuid
     category_name:
       type: string
+  required:
+    - category_id
+    - category_name
 
 GetHobbyResponse:
   type: array
@@ -58,3 +73,5 @@ GetHobbyResponse:
             type: array
             items:
               $ref: "#/Hobby"
+        required:
+          - hobbies

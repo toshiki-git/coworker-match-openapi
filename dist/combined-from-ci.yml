@@ -307,16 +307,16 @@ components:
     UserBase:
       type: object
       properties:
-        user_name:
+        userName:
           type: string
         email:
           type: string
-        avatar_url:
+        avatarUrl:
           type: string
       required:
-        - user_name
+        - userName
         - email
-        - avatar_url
+        - avatarUrl
     UpdateUserRequest:
       allOf:
         - $ref: '#/components/schemas/UserBase'
@@ -324,11 +324,11 @@ components:
       allOf:
         - type: object
           properties:
-            user_id:
+            userId:
               type: string
               format: uuid
           required:
-            - user_id
+            - userId
         - $ref: '#/components/schemas/UserBase'
     UpdateUserResponse:
       type: object
@@ -357,25 +357,25 @@ components:
     Category:
       type: object
       properties:
-        category_id:
+        categoryId:
           type: string
           format: uuid
-        category_name:
+        categoryName:
           type: string
       required:
-        - category_id
-        - category_name
+        - categoryId
+        - categoryName
     Hobby:
       type: object
       properties:
-        hobby_id:
+        hobbyId:
           type: string
           format: uuid
-        hobby_name:
+        hobbyName:
           type: string
       required:
-        - hobby_id
-        - hobby_name
+        - hobbyId
+        - hobbyName
     GetHobbyResponse:
       type: array
       items:
@@ -392,35 +392,35 @@ components:
     CreateHobbyRequest:
       type: object
       properties:
-        creator_id:
+        creatorId:
           type: string
-        hobby_name:
+        hobbyName:
           type: string
-        category_id:
+        categoryId:
           type: string
           format: uuid
       required:
-        - creator_id
-        - hobby_name
-        - category_id
+        - creatorId
+        - hobbyName
+        - categoryId
     HobbyDetails:
       type: object
       properties:
-        hobby_id:
+        hobbyId:
           type: string
           format: uuid
-        hobby_name:
+        hobbyName:
           type: string
-        creator_id:
+        creatorId:
           type: string
-        category_id:
+        categoryId:
           type: string
           format: uuid
       required:
-        - hobby_id
-        - hobby_name
-        - creator_id
-        - category_id
+        - hobbyId
+        - hobbyName
+        - creatorId
+        - categoryId
     CreateHobbyResponse:
       type: object
       properties:
@@ -431,13 +431,13 @@ components:
     UserHobby:
       type: object
       properties:
-        hobby_ids:
+        hobbyIds:
           type: array
           items:
             type: string
             format: uuid
       required:
-        - hobby_ids
+        - hobbyIds
     UpdateUserHobbyRequest:
       allOf:
         - $ref: '#/components/schemas/UserHobby'
@@ -455,36 +455,36 @@ components:
       items:
         type: object
         properties:
-          hobby_id:
+          hobbyId:
             type: string
             format: uuid
-          hobby_name:
+          hobbyName:
             type: string
         required:
-          - hobby_id
-          - hobby_name
+          - hobbyId
+          - hobbyName
     GetMatchingResponse:
       type: array
       items:
         type: object
         properties:
-          matching_id:
+          matchingId:
             type: string
             format: uuid
-          avatar_url:
+          avatarUrl:
             type: string
-          match_user_name:
+          matchUserName:
             type: string
-          last_message:
+          lastMessage:
             type: string
-          unread_message_count:
+          unreadMessageCount:
             type: integer
         required:
-          - matching_id
-          - avatar_url
-          - match_user_name
-          - last_message
-          - unread_message_count
+          - matchingId
+          - avatarUrl
+          - matchUserName
+          - lastMessage
+          - unreadMessageCount
     GetMatchingUserResponse:
       type: object
       properties:
@@ -495,29 +495,29 @@ components:
     Choice:
       type: object
       properties:
-        choice_text:
+        choiceText:
           type: string
           example: 'yes'
-        choice_image_url:
+        choiceImageUrl:
           type: string
       required:
-        - choice_text
-        - choice_image_url
+        - choiceText
+        - choiceImageUrl
     Question:
       type: object
       properties:
-        question_id:
+        questionId:
           type: string
           format: uuid
-        question_text:
+        questionText:
           type: string
         choice1:
           $ref: '#/components/schemas/Choice'
         choice2:
           $ref: '#/components/schemas/Choice'
       required:
-        - question_id
-        - question_text
+        - questionId
+        - questionText
         - choice1
         - choice2
     GetQuestionResponse:
@@ -527,14 +527,14 @@ components:
     Answer:
       type: object
       properties:
-        question_id:
+        questionId:
           type: string
           format: uuid
         answer:
           type: string
           example: 'yes'
       required:
-        - question_id
+        - questionId
         - answer
     CreateQuestionRequest:
       type: object
@@ -548,48 +548,48 @@ components:
     CreateQuestionResponse:
       type: object
       properties:
-        matching_id:
+        matchingId:
           type: string
           format: uuid
-        sender_user_id:
+        senderUserId:
           type: string
-        receiver_user_id:
+        receiverUserId:
           type: string
-        matching_date:
+        matchingDate:
           type: string
           format: date-time
       required:
-        - matching_id
-        - sender_user_id
-        - receiver_user_id
-        - matching_date
+        - matchingId
+        - senderUserId
+        - receiverUserId
+        - matchingDate
     GetQuestionCardResponse:
       type: array
       items:
         type: object
         properties:
-          question_card_id:
+          questionCardId:
             type: string
             format: uuid
-          question_card_text:
+          questionCardText:
             type: string
-          is_used:
+          isUsed:
             type: boolean
         required:
-          - question_card_id
-          - question_card_text
-          - is_used
+          - questionCardId
+          - questionCardText
+          - isUsed
     Message:
       type: object
       properties:
-        message_id:
+        messageId:
           type: string
           format: uuid
-        message_text:
+        messageText:
           type: string
       required:
-        - message_id
-        - message_text
+        - messageId
+        - messageText
     GetMessageResponse:
       type: object
       properties:
@@ -598,12 +598,12 @@ components:
           items:
             type: object
             properties:
-              question_card_id:
+              questionCardId:
                 type: string
                 format: uuid
-              question_card_text:
+              questionCardText:
                 type: string
-              message_pair:
+              messagePair:
                 type: object
                 properties:
                   me:
@@ -614,38 +614,38 @@ components:
                   - me
                   - you
             required:
-              - question_card_id
-              - question_card_text
-              - message_pair
+              - questionCardId
+              - questionCardText
+              - messagePair
       required:
         - messages
     CreateMessageRequest:
       type: object
       properties:
-        question_card_id:
+        questionCardId:
           type: string
           format: uuid
       required:
-        - question_card_id
+        - questionCardId
     CreateMessageResponse:
       type: object
       properties:
-        message_id:
+        messageId:
           type: string
           format: uuid
       required:
-        - message_id
+        - messageId
     UpdateMessageRequest:
       type: object
       properties:
-        message_text:
+        messageText:
           type: string
       required:
-        - message_text
+        - messageText
     UpdateMessageResponse:
       type: object
       properties:
-        message_text:
+        messageText:
           type: string
       required:
-        - message_text
+        - messageText

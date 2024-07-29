@@ -313,6 +313,10 @@ components:
           type: string
         avatar_url:
           type: string
+      required:
+        - user_name
+        - email
+        - avatar_url
     UpdateUserRequest:
       allOf:
         - $ref: '#/components/schemas/UserBase'
@@ -322,29 +326,34 @@ components:
           properties:
             user_id:
               type: string
+              format: uuid
+          required:
+            - user_id
         - $ref: '#/components/schemas/UserBase'
     UpdateUserResponse:
       type: object
       properties:
         user:
           $ref: '#/components/schemas/User'
+      required:
+        - user
     CreateUserRequest:
       allOf:
         - $ref: '#/components/schemas/UserBase'
-      required:
-        - name
-        - email
-        - avatar_url
     CreateUserResponse:
       type: object
       properties:
         user:
           $ref: '#/components/schemas/User'
+      required:
+        - user
     GetUserResponse:
       type: object
       properties:
         user:
           $ref: '#/components/schemas/User'
+      required:
+        - user
     Category:
       type: object
       properties:
@@ -417,6 +426,8 @@ components:
       properties:
         hobby:
           $ref: '#/components/schemas/HobbyDetails'
+      required:
+        - hobby
     UserHobby:
       type: object
       properties:
@@ -425,6 +436,8 @@ components:
           items:
             type: string
             format: uuid
+      required:
+        - hobby_ids
     UpdateUserHobbyRequest:
       allOf:
         - $ref: '#/components/schemas/UserHobby'
@@ -447,6 +460,9 @@ components:
             format: uuid
           hobby_name:
             type: string
+        required:
+          - hobby_id
+          - hobby_name
     GetMatchingResponse:
       type: array
       items:
@@ -463,11 +479,19 @@ components:
             type: string
           unread_message_count:
             type: integer
+        required:
+          - matching_id
+          - avatar_url
+          - match_user_name
+          - last_message
+          - unread_message_count
     GetMatchingUserResponse:
       type: object
       properties:
         user:
           $ref: '#/components/schemas/User'
+      required:
+        - user
     Choice:
       type: object
       properties:
@@ -476,6 +500,9 @@ components:
           example: 'yes'
         choice_image_url:
           type: string
+      required:
+        - choice_text
+        - choice_image_url
     Question:
       type: object
       properties:
@@ -488,6 +515,11 @@ components:
           $ref: '#/components/schemas/Choice'
         choice2:
           $ref: '#/components/schemas/Choice'
+      required:
+        - question_id
+        - question_text
+        - choice1
+        - choice2
     GetQuestionResponse:
       type: array
       items:
@@ -501,6 +533,9 @@ components:
         answer:
           type: string
           example: 'yes'
+      required:
+        - question_id
+        - answer
     CreateQuestionRequest:
       type: object
       properties:
@@ -508,6 +543,8 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Answer'
+      required:
+        - answers
     CreateQuestionResponse:
       type: object
       properties:
@@ -521,6 +558,11 @@ components:
         matching_date:
           type: string
           format: date-time
+      required:
+        - matching_id
+        - sender_user_id
+        - receiver_user_id
+        - matching_date
     GetQuestionCardResponse:
       type: array
       items:
@@ -533,6 +575,10 @@ components:
             type: string
           is_used:
             type: boolean
+        required:
+          - question_card_id
+          - question_card_text
+          - is_used
     Message:
       type: object
       properties:
@@ -541,6 +587,9 @@ components:
           format: uuid
         message_text:
           type: string
+      required:
+        - message_id
+        - message_text
     GetMessageResponse:
       type: object
       properties:
@@ -561,25 +610,42 @@ components:
                     $ref: '#/components/schemas/Message'
                   you:
                     $ref: '#/components/schemas/Message'
+                required:
+                  - me
+                  - you
+            required:
+              - question_card_id
+              - question_card_text
+              - message_pair
+      required:
+        - messages
     CreateMessageRequest:
       type: object
       properties:
         question_card_id:
           type: string
           format: uuid
+      required:
+        - question_card_id
     CreateMessageResponse:
       type: object
       properties:
         message_id:
           type: string
           format: uuid
+      required:
+        - message_id
     UpdateMessageRequest:
       type: object
       properties:
         message_text:
           type: string
+      required:
+        - message_text
     UpdateMessageResponse:
       type: object
       properties:
         message_text:
           type: string
+      required:
+        - message_text

@@ -353,6 +353,9 @@ components:
           format: uuid
         category_name:
           type: string
+      required:
+        - category_id
+        - category_name
     Hobby:
       type: object
       properties:
@@ -361,6 +364,9 @@ components:
           format: uuid
         hobby_name:
           type: string
+      required:
+        - hobby_id
+        - hobby_name
     GetHobbyResponse:
       type: array
       items:
@@ -372,6 +378,8 @@ components:
                 type: array
                 items:
                   $ref: '#/components/schemas/Hobby'
+            required:
+              - hobbies
     CreateHobbyRequest:
       type: object
       properties:
@@ -382,6 +390,10 @@ components:
         category_id:
           type: string
           format: uuid
+      required:
+        - creator_id
+        - hobby_name
+        - category_id
     HobbyDetails:
       type: object
       properties:
@@ -395,6 +407,11 @@ components:
         category_id:
           type: string
           format: uuid
+      required:
+        - hobby_id
+        - hobby_name
+        - creator_id
+        - category_id
     CreateHobbyResponse:
       type: object
       properties:

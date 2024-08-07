@@ -26,8 +26,5 @@ GetMatchingRes:
 
 GetMatchingUserRes:
   type: object
-  properties:
-    user:
-      $ref: "./user.yml#/User"
-  required:
-    - user
+  allOf:
+    - $ref: "./user.yml#/User"

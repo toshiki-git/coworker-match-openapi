@@ -12,25 +12,38 @@ UserBase:
     - email
     - avatarUrl
 
+User:
+  type: object
+  properties:
+    userId:
+      type: string
+      format: uuid
+    userName:
+      type: string
+    email:
+      type: string
+    avatarUrl:
+      type: string
+  required:
+    - userId
+    - userName
+    - email
+    - avatarUrl
+
 CreateUserReq:
+  type: object
   allOf:
     - $ref: "#/UserBase"
 
 CreateUserRes:
   type: object
-  properties:
-    user:
-      $ref: "#/User"
-  required:
-    - user
+  allOf:
+    - $ref: "#/User"
 
 GetUserRes:
   type: object
-  properties:
-    user:
-      $ref: "#/User"
-  required:
-    - user
+  allOf:
+    - $ref: "#/User"
 
 UpdateUserReq:
   allOf:
@@ -38,19 +51,5 @@ UpdateUserReq:
 
 UpdateUserRes:
   type: object
-  properties:
-    user:
-      $ref: "#/User"
-  required:
-    - user
-
-User:
   allOf:
-    - type: object
-      properties:
-        userId:
-          type: string
-          format: uuid
-      required:
-        - userId
-    - $ref: "#/UserBase"
+    - $ref: "#/User"

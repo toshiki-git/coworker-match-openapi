@@ -27,11 +27,8 @@ CreateHobbyReq:
 
 CreateHobbyRes:
   type: object
-  properties:
-    hobby:
-      $ref: "#/HobbyDetails"
-  required:
-    - hobby
+  allOf:
+    - $ref: "#/HobbyDetails"
 
 HobbyDetails:
   type: object

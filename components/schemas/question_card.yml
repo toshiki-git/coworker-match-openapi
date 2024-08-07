@@ -17,3 +17,5 @@ GetQuestionCardRes:
           - questionCardId
           - questionCardText
           - isUsed
+  required:
+    - questionCards

@@ -23,6 +23,8 @@ GetMatchingRes:
           - matchUserName
           - lastMessage
           - unreadMessageCount
+  required:
+    - matchings
 
 GetMatchingUserRes:
   type: object

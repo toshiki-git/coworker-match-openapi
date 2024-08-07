@@ -32,3 +32,5 @@ GetUserHobbyRes:
       type: array
       items:
         $ref: "./hobby.yml#/Hobby"
+  required:
+    - hobbies

@@ -47,6 +47,8 @@ GetQuestionRes:
       type: array
       items:
         $ref: "#/Question"
+  required:
+    - questions
 
 Question:
   type: object

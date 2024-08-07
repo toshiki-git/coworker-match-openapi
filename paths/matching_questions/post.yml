@@ -1,7 +1,7 @@
 post:
   summary: Create a new matching
   tags:
-    - Questions
+    - MatchingQuestions
   requestBody:
     required: true
     content:

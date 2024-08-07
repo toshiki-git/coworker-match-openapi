@@ -26,15 +26,9 @@ UpdateUserHobbyRes:
     - $ref: "#/UserHobby"
 
 GetUserHobbyRes:
-  type: array
-  items:
-    type: object
-    properties:
-      hobbyId:
-        type: string
-        format: uuid
-      hobbyName:
-        type: string
-    required:
-      - hobbyId
-      - hobbyName
+  type: object
+  properties:
+    hobbies:
+      type: array
+      items:
+        $ref: "./hobby.yml#/Hobby"

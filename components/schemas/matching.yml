@@ -1,25 +1,28 @@
 GetMatchingRes:
-  type: array
-  items:
-    type: object
-    properties:
-      matchingId:
-        type: string
-        format: uuid
-      avatarUrl:
-        type: string
-      matchUserName:
-        type: string
-      lastMessage:
-        type: string
-      unreadMessageCount:
-        type: integer
-    required:
-      - matchingId
-      - avatarUrl
-      - matchUserName
-      - lastMessage
-      - unreadMessageCount
+  type: object
+  properties:
+    matchings:
+      type: array
+      items:
+        type: object
+        properties:
+          matchingId:
+            type: string
+            format: uuid
+          avatarUrl:
+            type: string
+          matchUserName:
+            type: string
+          lastMessage:
+            type: string
+          unreadMessageCount:
+            type: integer
+        required:
+          - matchingId
+          - avatarUrl
+          - matchUserName
+          - lastMessage
+          - unreadMessageCount
 
 GetMatchingUserRes:
   type: object

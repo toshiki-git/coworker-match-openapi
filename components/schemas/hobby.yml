@@ -65,15 +65,18 @@ Category:
     - categoryName
 
 GetHobbyRes:
-  type: array
-  items:
-    allOf:
-      - $ref: "#/Category"
-      - type: object
-        properties:
-          hobbies:
-            type: array
-            items:
-              $ref: "#/Hobby"
-        required:
-          - hobbies
+  type: object
+  properties:
+    hobbyGroups:
+      type: array
+      items:
+        allOf:
+          - $ref: "#/Category"
+          - type: object
+            properties:
+              hobbies:
+                type: array
+                items:
+                  $ref: "#/Hobby"
+            required:
+              - hobbies

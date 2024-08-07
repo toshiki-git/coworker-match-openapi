@@ -1,16 +1,19 @@
 GetQuestionCardRes:
-  type: array
-  items:
-    type: object
-    properties:
-      questionCardId:
-        type: string
-        format: uuid
-      questionCardText:
-        type: string
-      isUsed:
-        type: boolean
-    required:
-      - questionCardId
-      - questionCardText
-      - isUsed
+  type: object
+  properties:
+    questionCards:
+      type: array
+      items:
+        type: object
+        properties:
+          questionCardId:
+            type: string
+            format: uuid
+          questionCardText:
+            type: string
+          isUsed:
+            type: boolean
+        required:
+          - questionCardId
+          - questionCardText
+          - isUsed

@@ -1,6 +1,6 @@
 get:
   tags:
-    - Questions
+    - MatchingQuestions
   summary: Get user questions
   responses:
     "200":

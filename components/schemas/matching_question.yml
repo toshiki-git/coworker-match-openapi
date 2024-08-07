@@ -41,9 +41,12 @@ CreateQuestionRes:
     - matchingDate
 
 GetQuestionRes:
-  type: array
-  items:
-    $ref: "#/Question"
+  type: object
+  properties:
+    questions:
+      type: array
+      items:
+        $ref: "#/Question"
 
 Question:
   type: object

@@ -24,22 +24,22 @@ paths:
   /users:
     $ref: "./paths/users/index.yml"
   /users/{userId}:
-    $ref: "./paths/users/{user_id}/index.yml"
+    $ref: "./paths/users/{userId}/index.yml"
   /hobbies:
     $ref: "./paths/hobbies/index.yml"
   /user_hobbies:
     $ref: "./paths/user_hobbies/index.yml"
   /user_hobbies/{userId}:
-    $ref: "./paths/user_hobbies/{user_id}/index.yml"
+    $ref: "./paths/user_hobbies/{userId}/index.yml"
   /matchings:
     $ref: "./paths/matchings/index.yml"
   /matchings/{matchingId}:
-    $ref: "./paths/matchings/{matching_id}/index.yml"
+    $ref: "./paths/matchings/{matchingId}/index.yml"
   /matching_questions:
     $ref: "./paths/matching_questions/index.yml"
   /question_cards/{matchingId}:
-    $ref: "./paths/question_cards/{matching_id}/index.yml"
+    $ref: "./paths/question_cards/{matchingId}/index.yml"
   /messages/{matchingId}:
-    $ref: "./paths/messages/{matching_id}/index.yml"
+    $ref: "./paths/messages/{matchingId}/index.yml"
   /messages/{messageId}:
-    $ref: "./paths/messages/{message_id}/index.yml"
+    $ref: "./paths/messages/{messageId}/index.yml"

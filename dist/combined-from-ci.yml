@@ -391,6 +391,8 @@ components:
                       $ref: '#/components/schemas/Hobby'
                 required:
                   - hobbies
+      required:
+        - hobbyGroups
     CreateHobbyReq:
       type: object
       properties:
@@ -456,6 +458,8 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Hobby'
+      required:
+        - hobbies
     GetMatchingRes:
       type: object
       properties:
@@ -481,6 +485,8 @@ components:
               - matchUserName
               - lastMessage
               - unreadMessageCount
+      required:
+        - matchings
     GetMatchingUserRes:
       type: object
       allOf:
@@ -520,6 +526,8 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Question'
+      required:
+        - questions
     Answer:
       type: object
       properties:
@@ -578,6 +586,8 @@ components:
               - questionCardId
               - questionCardText
               - isUsed
+      required:
+        - questionCards
     Message:
       type: object
       properties:

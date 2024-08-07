@@ -321,39 +321,38 @@ components:
       allOf:
         - $ref: '#/components/schemas/UserBase'
     User:
-      allOf:
-        - type: object
-          properties:
-            userId:
-              type: string
-              format: uuid
-          required:
-            - userId
-        - $ref: '#/components/schemas/UserBase'
-    UpdateUserRes:
       type: object
       properties:
-        user:
-          $ref: '#/components/schemas/User'
+        userId:
+          type: string
+          format: uuid
+        userName:
+          type: string
+        email:
+          type: string
+        avatarUrl:
+          type: string
       required:
-        - user
+        - userId
+        - userName
+        - email
+        - avatarUrl
+    UpdateUserRes:
+      type: object
+      allOf:
+        - $ref: '#/components/schemas/User'
     CreateUserReq:
+      type: object
       allOf:
         - $ref: '#/components/schemas/UserBase'
     CreateUserRes:
       type: object
-      properties:
-        user:
-          $ref: '#/components/schemas/User'
-      required:
-        - user
+      allOf:
+        - $ref: '#/components/schemas/User'
     GetUserRes:
       type: object
-      properties:
-        user:
-          $ref: '#/components/schemas/User'
-      required:
-        - user
+      allOf:
+        - $ref: '#/components/schemas/User'
     Category:
       type: object
       properties:
@@ -426,11 +425,8 @@ components:
         - categoryId
     CreateHobbyRes:
       type: object
-      properties:
-        hobby:
-          $ref: '#/components/schemas/HobbyDetails'
-      required:
-        - hobby
+      allOf:
+        - $ref: '#/components/schemas/HobbyDetails'
     UserHobby:
       type: object
       properties:
@@ -487,11 +483,8 @@ components:
               - unreadMessageCount
     GetMatchingUserRes:
       type: object
-      properties:
-        user:
-          $ref: '#/components/schemas/User'
-      required:
-        - user
+      allOf:
+        - $ref: '#/components/schemas/User'
     Choice:
       type: object
       properties:

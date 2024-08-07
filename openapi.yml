@@ -23,23 +23,23 @@ tags:
 paths:
   /users:
     $ref: "./paths/users/index.yml"
-  /users/{user_id}:
+  /users/{userId}:
     $ref: "./paths/users/{user_id}/index.yml"
   /hobbies:
     $ref: "./paths/hobbies/index.yml"
   /user_hobbies:
     $ref: "./paths/user_hobbies/index.yml"
-  /user_hobbies/{user_id}:
+  /user_hobbies/{userId}:
     $ref: "./paths/user_hobbies/{user_id}/index.yml"
   /matchings:
     $ref: "./paths/matchings/index.yml"
-  /matchings/{matching_id}:
+  /matchings/{matchingId}:
     $ref: "./paths/matchings/{matching_id}/index.yml"
   /matching_questions:
     $ref: "./paths/matching_questions/index.yml"
-  /question_cards/{matching_id}:
+  /question_cards/{matchingId}:
     $ref: "./paths/question_cards/{matching_id}/index.yml"
-  /messages/{matching_id}:
+  /messages/{matchingId}:
     $ref: "./paths/messages/{matching_id}/index.yml"
-  /messages/{message_id}:
+  /messages/{messageId}:
     $ref: "./paths/messages/{message_id}/index.yml"

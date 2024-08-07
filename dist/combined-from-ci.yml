@@ -14,7 +14,7 @@ tags:
     description: ユーザの趣味に関する操作
   - name: Matchings
     description: マッチングに関する操作
-  - name: Questions
+  - name: MatchingQuestions
     description: 2択の質問に関する操作
   - name: QuestionCards
     description: 質問カードに関する操作
@@ -31,14 +31,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CreateUserRequest'
+              $ref: '#/components/schemas/CreateUserReq'
       responses:
         '201':
           description: Created
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CreateUserResponse'
+                $ref: '#/components/schemas/CreateUserRes'
     put:
       tags:
         - Users
@@ -48,21 +48,21 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/UpdateUserRequest'
+              $ref: '#/components/schemas/UpdateUserReq'
       responses:
         '200':
           description: 2回目以降ユーザがログインしたときに、Googleのアカウントの名前などが変更されている場合に情報を更新する or 単純にline_accountなどを追加・更新する時に呼ばれる。
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/UpdateUserResponse'
-  /users/{user_id}:
+                $ref: '#/components/schemas/UpdateUserRes'
+  /users/{userId}:
     get:
       tags:
         - Users
       summary: Get a user by ID
       parameters:
-        - name: user_id
+        - name: userId
           in: path
           required: true
           schema:
@@ -73,7 +73,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/GetUserResponse'
+                $ref: '#/components/schemas/GetUserRes'
   /hobbies:
     get:
       tags:
@@ -85,7 +85,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/GetHobbyResponse'
+                $ref: '#/components/schemas/GetHobbyRes'
     post:
       summary: Create a new hobby
       tags:
@@ -95,15 +95,15 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CreateHobbyRequest'
+              $ref: '#/components/schemas/CreateHobbyReq'
       responses:
         '201':
           description: Created
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CreateHobbyResponse'
-  /user_hobbies:
+                $ref: '#/components/schemas/CreateHobbyRes'
+  /user-hobbies:
     post:
       summary: Create user new hobbies
       tags:
@@ -113,14 +113,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CreateUserHobbyRequest'
+              $ref: '#/components/schemas/CreateUserHobbyReq'
       responses:
         '201':
           description: Created
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CreateUserHobbyResponse'
+                $ref: '#/components/schemas/CreateUserHobbyRes'
     put:
       tags:
         - UserHobbies
@@ -130,21 +130,21 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/UpdateUserHobbyRequest'
+              $ref: '#/components/schemas/UpdateUserHobbyReq'
       responses:
         '200':
           description: Updated
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/UpdateUserHobbyResponse'
-  /user_hobbies/{user_id}:
+                $ref: '#/components/schemas/UpdateUserHobbyRes'
+  /user-hobbies/{userId}:
     get:
       tags:
         - UserHobbies
       summary: Get all hobbies of a user
       parameters:
-        - name: user_id
+        - name: userId
           in: path
           required: true
           schema:
@@ -155,7 +155,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/GetUserHobbyResponse'
+                $ref: '#/components/schemas/GetUserHobbyRes'
   /matchings:
     get:
       tags:
@@ -167,14 +167,14 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/GetMatchingResponse'
-  /matchings/{matching_id}:
+                $ref: '#/components/schemas/GetMatchingRes'
+  /matchings/{matchingId}:
     get:
       tags:
         - Matchings
       summary: Get match user
       parameters:
-        - name: matching_id
+        - name: matchingId
           in: path
           required: true
           schema:
@@ -185,28 +185,28 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/GetMatchingUserResponse'
-  /matching_questions:
+                $ref: '#/components/schemas/GetMatchingUserRes'
+  /matching-questions:
     post:
       summary: Create a new matching
       tags:
-        - Questions
+        - MatchingQuestions
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CreateQuestionRequest'
+              $ref: '#/components/schemas/CreateQuestionReq'
       responses:
         '201':
           description: Created
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CreateQuestionResponse'
+                $ref: '#/components/schemas/CreateQuestionRes'
     get:
       tags:
-        - Questions
+        - MatchingQuestions
       summary: Get user questions
       responses:
         '200':
@@ -214,14 +214,14 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/GetQuestionResponse'
-  /question_cards/{matching_id}:
+                $ref: '#/components/schemas/GetQuestionRes'
+  /question-cards/{matchingId}:
     get:
       tags:
         - QuestionCards
       summary: Get User Questions
       parameters:
-        - name: matching_id
+        - name: matchingId
           in: path
           required: true
           schema:
@@ -233,14 +233,14 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/GetQuestionCardResponse'
-  /messages/{matching_id}:
+                $ref: '#/components/schemas/GetQuestionCardRes'
+  /messages/{matchingId}:
     post:
       tags:
         - Messages
       summary: Create a new message
       parameters:
-        - name: matching_id
+        - name: matchingId
           in: path
           required: true
           schema:
@@ -251,20 +251,20 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CreateMessageRequest'
+              $ref: '#/components/schemas/CreateMessageReq'
       responses:
         '201':
           description: Created
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CreateMessageResponse'
+                $ref: '#/components/schemas/CreateMessageRes'
     get:
       tags:
         - Messages
       summary: Get all messages for a matching
       parameters:
-        - name: matching_id
+        - name: matchingId
           in: path
           required: true
           schema:
@@ -276,14 +276,14 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/GetMessageResponse'
-  /messages/{message_id}:
+                $ref: '#/components/schemas/GetMessageRes'
+  /messages/{messageId}:
     put:
       tags:
         - Messages
       summary: Update a message
       parameters:
-        - name: message_id
+        - name: messageId
           in: path
           required: true
           schema:
@@ -294,14 +294,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/UpdateMessageRequest'
+              $ref: '#/components/schemas/UpdateMessageReq'
       responses:
         '201':
           description: Created
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/UpdateMessageResponse'
+                $ref: '#/components/schemas/UpdateMessageRes'
 components:
   schemas:
     UserBase:
@@ -317,7 +317,7 @@ components:
         - userName
         - email
         - avatarUrl
-    UpdateUserRequest:
+    UpdateUserReq:
       allOf:
         - $ref: '#/components/schemas/UserBase'
     User:
@@ -330,24 +330,24 @@ components:
           required:
             - userId
         - $ref: '#/components/schemas/UserBase'
-    UpdateUserResponse:
+    UpdateUserRes:
       type: object
       properties:
         user:
           $ref: '#/components/schemas/User'
       required:
         - user
-    CreateUserRequest:
+    CreateUserReq:
       allOf:
         - $ref: '#/components/schemas/UserBase'
-    CreateUserResponse:
+    CreateUserRes:
       type: object
       properties:
         user:
           $ref: '#/components/schemas/User'
       required:
         - user
-    GetUserResponse:
+    GetUserRes:
       type: object
       properties:
         user:
@@ -376,20 +376,23 @@ components:
       required:
         - hobbyId
         - hobbyName
-    GetHobbyResponse:
-      type: array
-      items:
-        allOf:
-          - $ref: '#/components/schemas/Category'
-          - type: object
-            properties:
-              hobbies:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Hobby'
-            required:
-              - hobbies
-    CreateHobbyRequest:
+    GetHobbyRes:
+      type: object
+      properties:
+        hobbyGroups:
+          type: array
+          items:
+            allOf:
+              - $ref: '#/components/schemas/Category'
+              - type: object
+                properties:
+                  hobbies:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Hobby'
+                required:
+                  - hobbies
+    CreateHobbyReq:
       type: object
       properties:
         creatorId:
@@ -421,7 +424,7 @@ components:
         - hobbyName
         - creatorId
         - categoryId
-    CreateHobbyResponse:
+    CreateHobbyRes:
       type: object
       properties:
         hobby:
@@ -438,54 +441,51 @@ components:
             format: uuid
       required:
         - hobbyIds
-    UpdateUserHobbyRequest:
+    UpdateUserHobbyReq:
       allOf:
         - $ref: '#/components/schemas/UserHobby'
-    UpdateUserHobbyResponse:
+    UpdateUserHobbyRes:
       allOf:
         - $ref: '#/components/schemas/UserHobby'
-    CreateUserHobbyRequest:
+    CreateUserHobbyReq:
       allOf:
         - $ref: '#/components/schemas/UserHobby'
-    CreateUserHobbyResponse:
+    CreateUserHobbyRes:
       allOf:
         - $ref: '#/components/schemas/UserHobby'
-    GetUserHobbyResponse:
-      type: array
-      items:
-        type: object
-        properties:
-          hobbyId:
-            type: string
-            format: uuid
-          hobbyName:
-            type: string
-        required:
-          - hobbyId
-          - hobbyName
-    GetMatchingResponse:
-      type: array
-      items:
-        type: object
-        properties:
-          matchingId:
-            type: string
-            format: uuid
-          avatarUrl:
-            type: string
-          matchUserName:
-            type: string
-          lastMessage:
-            type: string
-          unreadMessageCount:
-            type: integer
-        required:
-          - matchingId
-          - avatarUrl
-          - matchUserName
-          - lastMessage
-          - unreadMessageCount
-    GetMatchingUserResponse:
+    GetUserHobbyRes:
+      type: object
+      properties:
+        hobbies:
+          type: array
+          items:
+            $ref: '#/components/schemas/Hobby'
+    GetMatchingRes:
+      type: object
+      properties:
+        matchings:
+          type: array
+          items:
+            type: object
+            properties:
+              matchingId:
+                type: string
+                format: uuid
+              avatarUrl:
+                type: string
+              matchUserName:
+                type: string
+              lastMessage:
+                type: string
+              unreadMessageCount:
+                type: integer
+            required:
+              - matchingId
+              - avatarUrl
+              - matchUserName
+              - lastMessage
+              - unreadMessageCount
+    GetMatchingUserRes:
       type: object
       properties:
         user:
@@ -520,10 +520,13 @@ components:
         - questionText
         - choice1
         - choice2
-    GetQuestionResponse:
-      type: array
-      items:
-        $ref: '#/components/schemas/Question'
+    GetQuestionRes:
+      type: object
+      properties:
+        questions:
+          type: array
+          items:
+            $ref: '#/components/schemas/Question'
     Answer:
       type: object
       properties:
@@ -536,7 +539,7 @@ components:
       required:
         - questionId
         - answer
-    CreateQuestionRequest:
+    CreateQuestionReq:
       type: object
       properties:
         answers:
@@ -545,7 +548,7 @@ components:
             $ref: '#/components/schemas/Answer'
       required:
         - answers
-    CreateQuestionResponse:
+    CreateQuestionRes:
       type: object
       properties:
         matchingId:
@@ -563,22 +566,25 @@ components:
         - senderUserId
         - receiverUserId
         - matchingDate
-    GetQuestionCardResponse:
-      type: array
-      items:
-        type: object
-        properties:
-          questionCardId:
-            type: string
-            format: uuid
-          questionCardText:
-            type: string
-          isUsed:
-            type: boolean
-        required:
-          - questionCardId
-          - questionCardText
-          - isUsed
+    GetQuestionCardRes:
+      type: object
+      properties:
+        questionCards:
+          type: array
+          items:
+            type: object
+            properties:
+              questionCardId:
+                type: string
+                format: uuid
+              questionCardText:
+                type: string
+              isUsed:
+                type: boolean
+            required:
+              - questionCardId
+              - questionCardText
+              - isUsed
     Message:
       type: object
       properties:
@@ -590,7 +596,7 @@ components:
       required:
         - messageId
         - messageText
-    GetMessageResponse:
+    GetMessageRes:
       type: object
       properties:
         messages:
@@ -619,7 +625,7 @@ components:
               - messagePair
       required:
         - messages
-    CreateMessageRequest:
+    CreateMessageReq:
       type: object
       properties:
         questionCardId:
@@ -627,7 +633,7 @@ components:
           format: uuid
       required:
         - questionCardId
-    CreateMessageResponse:
+    CreateMessageRes:
       type: object
       properties:
         messageId:
@@ -635,14 +641,14 @@ components:
           format: uuid
       required:
         - messageId
-    UpdateMessageRequest:
+    UpdateMessageReq:
       type: object
       properties:
         messageText:
           type: string
       required:
         - messageText
-    UpdateMessageResponse:
+    UpdateMessageRes:
       type: object
       properties:
         messageText:

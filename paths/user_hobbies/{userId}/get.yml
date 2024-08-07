@@ -3,7 +3,7 @@ get:
     - UserHobbies
   summary: Get all hobbies of a user
   parameters:
-    - name: user_id
+    - name: userId
       in: path
       required: true
       schema:

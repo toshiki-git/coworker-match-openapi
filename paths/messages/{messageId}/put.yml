@@ -3,7 +3,7 @@ put:
     - Messages
   summary: Update a message
   parameters:
-    - name: message_id
+    - name: messageId
       in: path
       required: true
       schema:

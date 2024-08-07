@@ -3,7 +3,7 @@ get:
     - Matchings
   summary: Get match user
   parameters:
-    - name: matching_id
+    - name: matchingId
       in: path
       required: true
       schema:

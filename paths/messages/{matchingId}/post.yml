@@ -3,7 +3,7 @@ post:
     - Messages
   summary: Create a new message
   parameters:
-    - name: matching_id
+    - name: matchingId
       in: path
       required: true
       schema:

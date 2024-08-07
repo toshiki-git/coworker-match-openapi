@@ -14,11 +14,11 @@ put:
     content:
       application/json:
         schema:
-          $ref: "../../../components/schemas/message.yml#/UpdateMessageRequest"
+          $ref: "../../../components/schemas/message.yml#/UpdateMessageReq"
   responses:
     "201":
       description: Created
       content:
         application/json:
           schema:
-            $ref: "../../../components/schemas/message.yml#/UpdateMessageResponse"
+            $ref: "../../../components/schemas/message.yml#/UpdateMessageRes"

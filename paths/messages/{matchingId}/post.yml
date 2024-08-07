@@ -14,11 +14,11 @@ post:
     content:
       application/json:
         schema:
-          $ref: "../../../components/schemas/message.yml#/CreateMessageRequest"
+          $ref: "../../../components/schemas/message.yml#/CreateMessageReq"
   responses:
     "201":
       description: Created
       content:
         application/json:
           schema:
-            $ref: "../../../components/schemas/message.yml#/CreateMessageResponse"
+            $ref: "../../../components/schemas/message.yml#/CreateMessageRes"

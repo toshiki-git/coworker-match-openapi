@@ -1,4 +1,4 @@
-CreateQuestionRequest:
+CreateQuestionReq:
   type: object
   properties:
     answers:
@@ -21,7 +21,7 @@ Answer:
     - questionId
     - answer
 
-CreateQuestionResponse:
+CreateQuestionRes:
   type: object
   properties:
     matchingId:
@@ -40,7 +40,7 @@ CreateQuestionResponse:
     - receiverUserId
     - matchingDate
 
-GetQuestionResponse:
+GetQuestionRes:
   type: array
   items:
     $ref: "#/Question"

@@ -8,4 +8,4 @@ get:
       content:
         application/json:
           schema:
-            $ref: "../../components/schemas/matching_question.yml#/GetQuestionResponse"
+            $ref: "../../components/schemas/matching_question.yml#/GetQuestionRes"

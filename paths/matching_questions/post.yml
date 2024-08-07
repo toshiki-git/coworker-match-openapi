@@ -7,11 +7,11 @@ post:
     content:
       application/json:
         schema:
-          $ref: "../../components/schemas/matching_question.yml#/CreateQuestionRequest"
+          $ref: "../../components/schemas/matching_question.yml#/CreateQuestionReq"
   responses:
     "201":
       description: Created
       content:
         application/json:
           schema:
-            $ref: "../../components/schemas/matching_question.yml#/CreateQuestionResponse"
+            $ref: "../../components/schemas/matching_question.yml#/CreateQuestionRes"

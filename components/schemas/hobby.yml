@@ -10,7 +10,7 @@ Hobby:
     - hobbyId
     - hobbyName
 
-CreateHobbyRequest:
+CreateHobbyReq:
   type: object
   properties:
     creatorId:
@@ -25,7 +25,7 @@ CreateHobbyRequest:
     - hobbyName
     - categoryId
 
-CreateHobbyResponse:
+CreateHobbyRes:
   type: object
   properties:
     hobby:
@@ -64,7 +64,7 @@ Category:
     - categoryId
     - categoryName
 
-GetHobbyResponse:
+GetHobbyRes:
   type: array
   items:
     allOf:

@@ -7,11 +7,11 @@ put:
     content:
       application/json:
         schema:
-          $ref: "../../components/schemas/user.yml#/UpdateUserRequest"
+          $ref: "../../components/schemas/user.yml#/UpdateUserReq"
   responses:
     "200":
       description: 2回目以降ユーザがログインしたときに、Googleのアカウントの名前などが変更されている場合に情報を更新する or 単純にline_accountなどを追加・更新する時に呼ばれる。
       content:
         application/json:
           schema:
-            $ref: "../../components/schemas/user.yml#/UpdateUserResponse"
+            $ref: "../../components/schemas/user.yml#/UpdateUserRes"

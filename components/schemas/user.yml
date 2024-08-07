@@ -12,11 +12,11 @@ UserBase:
     - email
     - avatarUrl
 
-CreateUserRequest:
+CreateUserReq:
   allOf:
     - $ref: "#/UserBase"
 
-CreateUserResponse:
+CreateUserRes:
   type: object
   properties:
     user:
@@ -24,7 +24,7 @@ CreateUserResponse:
   required:
     - user
 
-GetUserResponse:
+GetUserRes:
   type: object
   properties:
     user:
@@ -32,11 +32,11 @@ GetUserResponse:
   required:
     - user
 
-UpdateUserRequest:
+UpdateUserReq:
   allOf:
     - $ref: "#/UserBase"
 
-UpdateUserResponse:
+UpdateUserRes:
   type: object
   properties:
     user:

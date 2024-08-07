@@ -7,11 +7,11 @@ post:
     content:
       application/json:
         schema:
-          $ref: "../../components/schemas/user_hobby.yml#/CreateUserHobbyRequest"
+          $ref: "../../components/schemas/user_hobby.yml#/CreateUserHobbyReq"
   responses:
     "201":
       description: Created
       content:
         application/json:
           schema:
-            $ref: "../../components/schemas/user_hobby.yml#/CreateUserHobbyResponse"
+            $ref: "../../components/schemas/user_hobby.yml#/CreateUserHobbyRes"

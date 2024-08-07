@@ -22,7 +22,7 @@ QuestionCard:
     - questionCardId
     - questionCardText
 
-CreateMessageRequest:
+CreateMessageReq:
   type: object
   properties:
     questionCardId:
@@ -31,7 +31,7 @@ CreateMessageRequest:
   required:
     - questionCardId
 
-CreateMessageResponse:
+CreateMessageRes:
   type: object
   properties:
     messageId:
@@ -40,7 +40,7 @@ CreateMessageResponse:
   required:
     - messageId
 
-GetMessageResponse:
+GetMessageRes:
   type: object
   properties:
     messages:
@@ -70,7 +70,7 @@ GetMessageResponse:
   required:
     - messages
 
-UpdateMessageRequest:
+UpdateMessageReq:
   type: object
   properties:
     messageText:
@@ -78,7 +78,7 @@ UpdateMessageRequest:
   required:
     - messageText
 
-UpdateMessageResponse:
+UpdateMessageRes:
   type: object
   properties:
     messageText:

@@ -15,4 +15,4 @@ get:
       content:
         application/json:
           schema:
-            $ref: "../../../components/schemas/question_card.yml#/GetQuestionCardResponse"
+            $ref: "../../../components/schemas/question_card.yml#/GetQuestionCardRes"

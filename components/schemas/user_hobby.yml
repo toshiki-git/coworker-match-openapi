@@ -9,23 +9,23 @@ UserHobby:
   required:
     - hobbyIds
 
-CreateUserHobbyRequest:
+CreateUserHobbyReq:
   allOf:
     - $ref: "#/UserHobby"
 
-CreateUserHobbyResponse:
+CreateUserHobbyRes:
   allOf:
     - $ref: "#/UserHobby"
 
-UpdateUserHobbyRequest:
+UpdateUserHobbyReq:
   allOf:
     - $ref: "#/UserHobby"
 
-UpdateUserHobbyResponse:
+UpdateUserHobbyRes:
   allOf:
     - $ref: "#/UserHobby"
 
-GetUserHobbyResponse:
+GetUserHobbyRes:
   type: array
   items:
     type: object

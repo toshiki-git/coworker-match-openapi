@@ -8,4 +8,4 @@ get:
       content:
         application/json:
           schema:
-            $ref: "../../components/schemas/hobby.yml#/GetHobbyResponse"
+            $ref: "../../components/schemas/hobby.yml#/GetHobbyRes"

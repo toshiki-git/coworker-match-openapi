@@ -1,4 +1,4 @@
-GetQuestionCardResponse:
+GetQuestionCardRes:
   type: array
   items:
     type: object

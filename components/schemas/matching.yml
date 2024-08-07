@@ -1,4 +1,4 @@
-GetMatchingResponse:
+GetMatchingRes:
   type: array
   items:
     type: object
@@ -21,7 +21,7 @@ GetMatchingResponse:
       - lastMessage
       - unreadMessageCount
 
-GetMatchingUserResponse:
+GetMatchingUserRes:
   type: object
   properties:
     user:

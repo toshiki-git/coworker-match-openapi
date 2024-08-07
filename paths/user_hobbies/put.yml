@@ -7,11 +7,11 @@ put:
     content:
       application/json:
         schema:
-          $ref: "../../components/schemas/user_hobby.yml#/UpdateUserHobbyRequest"
+          $ref: "../../components/schemas/user_hobby.yml#/UpdateUserHobbyReq"
   responses:
     "200":
       description: Updated
       content:
         application/json:
           schema:
-            $ref: "../../components/schemas/user_hobby.yml#/UpdateUserHobbyResponse"
+            $ref: "../../components/schemas/user_hobby.yml#/UpdateUserHobbyRes"

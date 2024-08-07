@@ -15,4 +15,4 @@ get:
       content:
         application/json:
           schema:
-            $ref: "../../../components/schemas/message.yml#/GetMessageResponse"
+            $ref: "../../../components/schemas/message.yml#/GetMessageRes"

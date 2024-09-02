@@ -5,6 +5,9 @@ info:
 servers:
   - url: http://localhost:8080
     description: Local Server
+  - url: https://cwm-api-dev-45nffvaatq-an.a.run.app
+    description: Dev Server
+
 tags:
   - name: Users
     description: ユーザに関する操作

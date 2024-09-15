@@ -47,7 +47,7 @@ GetUserCategoryPercentagesRes:
       type: array
       description: List of categories with user's interest levels
       items:
-        $ref: "#/components/schemas/CategoryInterest"
+        $ref: "#/CategoryInterest"
   required:
     - userId
     - categories

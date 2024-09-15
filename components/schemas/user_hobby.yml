@@ -37,27 +37,37 @@ GetUserHobbyRes:
 
 GetUserCategoryPercentagesRes:
   type: object
+  description: Response object containing the user's interest percentages for various categories
   properties:
     userId:
       type: string
       format: uuid
-      description: The ID of the user
+      description: User's unique identifier
     categories:
       type: array
+      description: List of categories with user's interest levels
       items:
-        type: object
-        properties:
-          categoryId:
-            type: string
-            format: uuid
-            description: The ID of the category
-          categoryName:
-            type: string
-            description: The name of the category
-          interestPercentage:
-            type: integer
-            format: int32
-            description: The interest level percentage of the user in this category (0-100%)
+        $ref: "#/components/schemas/CategoryInterest"
   required:
     - userId
     - categories
+
+CategoryInterest:
+  type: object
+  description: Represents user's interest percentage for a specific category
+  properties:
+    categoryId:
+      type: string
+      format: uuid
+      description: Category's unique identifier
+    categoryName:
+      type: string
+      description: Name of the category
+    interestPercentage:
+      type: integer
+      format: int32
+      description: User's interest percentage in this category (0-100%)
+  required:
+    - categoryId
+    - categoryName
+    - interestPercentage

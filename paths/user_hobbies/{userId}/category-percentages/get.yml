@@ -1,0 +1,17 @@
+get:
+  tags:
+    - UserHobbies
+  summary: Get interest level percentages by category for the user
+  parameters:
+    - name: userId
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    "200":
+      description: Returns the user's interest levels by category as percentages
+      content:
+        application/json:
+          schema:
+            $ref: "../../../../components/schemas/user_hobby.yml#/GetUserCategoryPercentagesRes"

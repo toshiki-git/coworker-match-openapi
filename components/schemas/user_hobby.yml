@@ -34,3 +34,30 @@ GetUserHobbyRes:
         $ref: "./hobby.yml#/Hobby"
   required:
     - hobbies
+
+GetUserCategoryPercentagesRes:
+  type: object
+  properties:
+    userId:
+      type: string
+      format: uuid
+      description: The ID of the user
+    categories:
+      type: array
+      items:
+        type: object
+        properties:
+          categoryId:
+            type: string
+            format: uuid
+            description: The ID of the category
+          categoryName:
+            type: string
+            description: The name of the category
+          interestPercentage:
+            type: integer
+            format: int32
+            description: The interest level percentage of the user in this category (0-100%)
+  required:
+    - userId
+    - categories

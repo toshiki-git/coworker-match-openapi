@@ -34,6 +34,8 @@ paths:
     $ref: "./paths/user_hobbies/index.yml"
   /user-hobbies/{userId}:
     $ref: "./paths/user_hobbies/{userId}/index.yml"
+  /user-hobbies/{userId}/category-percentages:
+    $ref: "./paths/user_hobbies/{userId}/category-percentages/index.yml"
   /matchings:
     $ref: "./paths/matchings/index.yml"
   /matchings/{matchingId}:
